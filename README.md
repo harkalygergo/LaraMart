@@ -1,11 +1,11 @@
 # LaraMart
-LaraMart is a web application for marketplaces, based on Laravel PHP framework.
+LaraMart | Laravel based marketplace application.
 
-LaraMart let to create user account on webpage and make a new ad. Merchants can be added via adminstration area (dashboard) and import product ads from external link as JSON is also possible.
+LaraMart web application let to create user account on webpage and make a new ad. Merchants can be added via adminstration area (dashboard) and import product ads from external link as JSON is also possible.
 
 ---
 
-How to install?
+## How to install?
 
 1. Copy code from GitHub
 2. Run `npm install`
