@@ -1,7 +1,6 @@
-# LaraMart
-LaraMart | Laravel based marketplace application.
+# LaraMart | Laravel based marketplace web application
 
-LaraMart web application let to create user account on webpage and make a new ad. Merchants can be added via adminstration area (dashboard) and import product ads from external link as JSON is also possible.
+LaraMart lets to create user account on webpage and make a new ad. Merchants can be added via adminstration area (dashboard) and import product ads from external link as JSON is also possible.
 
 ---
 
