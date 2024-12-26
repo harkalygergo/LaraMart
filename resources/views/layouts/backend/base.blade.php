@@ -80,7 +80,6 @@
                 </div>
                 <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                     <a class="nav-link text-white mx-2 fs-4 fw-bold" aria-current="page" href="/">
-                        <i class="bi bi-apple mx-1"></i>
                         LaraMart admin
                     </a>
                     <hr class="text-white">

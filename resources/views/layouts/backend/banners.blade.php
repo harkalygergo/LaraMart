@@ -26,8 +26,8 @@
                         <td>{{ $category->href }}</td>
                         <td>{{ $category->hrefTarget }}</td>
                         <td>
-                            <a href="/admin/v1/category/edit/{{ $category->id }}" class="btn btn-primary">Szerkesztés</a>
-                            <form action="/admin/v1/category/{{ $category->id }}" method="POST">
+                            <a href="/admin/v1/banners/edit/{{ $category->id }}" class="btn btn-primary">Szerkesztés</a>
+                            <form action="/admin/v1/banners/{{ $category->id }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Törlés</button>

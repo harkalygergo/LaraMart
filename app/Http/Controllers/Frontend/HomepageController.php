@@ -11,7 +11,9 @@ class HomepageController extends Controller
     {
         return view('layouts.frontend.default.homepage', [
             // get all ads from database order by created_at desc
-            'ads' => Ad::orderBy('created_at', 'desc')->get()
+            'ads' => Ad::orderBy('created_at', 'desc')->get(),
+            // get banners from database order by position
+            'banners' => Banner::orderBy('position')->get(),
         ]);
     }
 }

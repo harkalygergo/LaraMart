@@ -7,12 +7,19 @@
     <div class="row py-3">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{ asset('assets/banner/banner1.png') }}" class="d-block w-100" alt="banner1">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('assets/banner/banner2.png') }}" class="d-block w-100" alt="banner2">
-                </div>
+
+                @foreach($banners as $banner)
+                    <div class="carousel-item @if(!$loop->first) active @endif">
+                        @if ($banner->href)
+                            <a href="{{ $banner->href }}" target="{{ $banner->hrefTarget }}">
+                        @endif
+                                <img src="{{ $banner->mediaURL }}" class="d-block w-100" alt="banner">
+                        @if ($banner->href)
+                            </a>
+                        @endif
+                    </div>
+                @endforeach
+
             </div>
         </div>
     </div>

@@ -76,7 +76,10 @@ Route::middleware(['auth'])->group(function () {
             Route::match(['get', 'post', 'put', 'delete'], 'page/add', [\App\Http\Controllers\Backend\PageController::class, 'addPage'])->name('addPage');
             Route::match(['get', 'post', 'put', 'delete'], 'page/edit/{page}', [\App\Http\Controllers\Backend\PageController::class, 'action'])->name('editPage');
             Route::get('settings/', [BackendController::class, 'showSettings']);
-            Route::get('banners/', [\App\Http\Controllers\Backend\BannerController::class, 'list']);
+            Route::get('banners/', [\App\Http\Controllers\Backend\BannerController::class, 'list'])->name('banners');
+            Route::match(['get', 'post', 'put', 'delete'], 'banners/new', [\App\Http\Controllers\Backend\BannerController::class, 'create'])->name('newBanner');
+            Route::match(['get', 'post', 'put', 'delete'], 'banners/edit/{id}', [\App\Http\Controllers\Backend\BannerController::class, 'edit'])->name('editBanner');
+            Route::delete('banners/delete/{id}', [\App\Http\Controllers\Backend\BannerController::class, 'delete'])->name('deleteBanner');
         });
     });
 
