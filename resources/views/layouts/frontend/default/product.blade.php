@@ -240,7 +240,7 @@
                             loading="lazy"
                             allowfullscreen
                             referrerpolicy="no-referrer-when-downgrade"
-                            src="https://www.google.com/maps/embed/v1/place?key={{ \App\Models\Settings::GOOGLE_EMBED_MAPS_API_KEY }}&q={{ $ad['user']['zip'] }}">
+                            src="https://www.google.com/maps/embed/v1/place?key={{ env('GOOGLE_EMBED_MAPS_API_KEY') }}&q={{ $ad['user']['zip'] }}">
                         </iframe>
                     @endif
 
@@ -262,7 +262,7 @@
                             loading="lazy"
                             allowfullscreen
                             referrerpolicy="no-referrer-when-downgrade"
-                            src="https://www.google.com/maps/embed/v1/place?key={{ \App\Models\Settings::GOOGLE_EMBED_MAPS_API_KEY }}&q={{ $ad['merchant']['zip'] }}">
+                            src="https://www.google.com/maps/embed/v1/place?key={{ env('GOOGLE_EMBED_MAPS_API_KEY') }}&q={{ $ad['merchant']['zip'] }}">
                         </iframe>
                     @endif
                 </div>
