@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Ad;
+use App\Models\Banner;
 use Illuminate\Routing\Controller;
 
 class HomepageController extends Controller
