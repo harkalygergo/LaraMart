@@ -37,4 +37,9 @@
             <button type="submit" class="btn btn-sm btn-danger">Törlés</button>
         </form>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('#content').summernote();
+        });
+    </script>
 @endsection

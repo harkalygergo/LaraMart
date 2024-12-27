@@ -1,6 +1,7 @@
-# LaraMart | Laravel based marketplace web application
+# LaraMart | Laravel based marketplace
+###### Version: 2024.12.27.1
 
-LaraMart lets to create user account on webpage and make a new ad. Merchants can be added via adminstration area (dashboard) and import product ads from external link as JSON is also possible.
+LaraMart web application lets to create user account on webpage and make a new ad. Merchants can be added via adminstration area (dashboard) and import product ads from external link as JSON is also possible.
 
 ---
 
