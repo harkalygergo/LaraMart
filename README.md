@@ -18,8 +18,11 @@ LaraMart web application is an online marketplace management tool. It's free and
 1. Copy code from GitHub
 2. Run `npm install`
 3. Copy `env.example` to `.env` and modify content
-4. Migrate database tables with `php artisan migrate` command
-5. Register a new user profile and make it admin in database with changing `is_admin` column.
+4. Generate key: `php artisan key:generate`
+5. Clear cache: `php artisan config:cache`
+6. Migrate database tables with `php artisan migrate` command
+7. Build CSS with `npm run build`
+7. Register a new user profile and make it admin in database with changing `is_admin` column.
 
 ---
 
