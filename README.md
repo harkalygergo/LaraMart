@@ -1,8 +1,10 @@
 # LaraMart | Laravel based marketplace
 
-###### Version: 2025.01.25.1
+###### Version: 2025.01.27.1
 
-LaraMart web application is an online marketplace management tool. It's free and always will be.
+LaraMart web application is an online marketplace management tool. All rights reserved!
+
+&copy; Copyright Harkály Gergő
 
 ## Functions
 

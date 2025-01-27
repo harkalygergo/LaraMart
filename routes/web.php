@@ -6,7 +6,6 @@ use App\Http\Controllers\Frontend\BarionController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\HomepageController;
-use App\Http\Controllers\Frontend\IMEIController;
 use App\Http\Controllers\Frontend\MessageController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\UserController;
@@ -80,6 +79,17 @@ Route::middleware(['auth'])->group(function () {
             Route::match(['get', 'post', 'put', 'delete'], 'banners/new', [\App\Http\Controllers\Backend\BannerController::class, 'create'])->name('newBanner');
             Route::match(['get', 'post', 'put', 'delete'], 'banners/edit/{id}', [\App\Http\Controllers\Backend\BannerController::class, 'edit'])->name('editBanner');
             Route::delete('banners/delete/{id}', [\App\Http\Controllers\Backend\BannerController::class, 'delete'])->name('deleteBanner');
+
+            // admin blog
+            Route::get('blog/', [\App\Http\Controllers\Backend\BlogController::class, 'index'])->name('admin.blog.index');
+            Route::match(['get', 'post', 'put'], 'blog/add', [\App\Http\Controllers\Backend\BlogController::class, 'add'])->name('admin.blog.add');
+            Route::match(['get', 'post', 'put', 'delete'], 'blog/edit/{page}', [\App\Http\Controllers\Backend\BlogController::class, 'action'])->name('admin.blog.edit');
+
+            // admin main menu
+            Route::get('menu/', [\App\Http\Controllers\Backend\MenuController::class, 'list'])->name('admin.menu.index');
+            Route::match(['get', 'post', 'put'], 'menu/add', [\App\Http\Controllers\Backend\MenuController::class, 'create'])->name('admin.menu.add');
+            Route::match(['get', 'post', 'put', 'delete'], 'menu/edit/{page}', [\App\Http\Controllers\Backend\MenuController::class, 'edit'])->name('admin.menu.edit');
+
         });
     });
 

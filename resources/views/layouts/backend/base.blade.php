@@ -114,7 +114,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">
+                            <a class="nav-link text-white" href="{{ route('admin.menu.index') }}">
+                                <i class="bi bi-menu-button-wide-fill"></i>
+                                Főmenü
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('admin.blog.index') }}">
                                 <i class="bi bi-layout-text-sidebar-reverse"></i>
                                 Blog
                             </a>

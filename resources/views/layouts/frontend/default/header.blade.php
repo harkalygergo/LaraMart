@@ -5,7 +5,7 @@
         </div>
         <div class="col-8 text-start text-lg-center">
             <a href="/">
-                <img src="{{ asset('assets/img/logo-380x110.png') }}" alt="logo" style="width: 100%;max-width:300px;">
+                óraplacc.hu
             </a>
         </div>
         <div class="col-3 my-auto text-end">
