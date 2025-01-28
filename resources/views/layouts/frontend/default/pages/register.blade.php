@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <h2>Regisztráció</h2>
-            <form action="/regisztracio" method="POST">
+            <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <!-- create name, phone input fields -->
                 <div class="form-group mb-3">

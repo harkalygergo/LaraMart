@@ -130,7 +130,7 @@
                             <li>jelölt ártól eltérő ajánlat adása</li>
                             <li>készülék információ lekérdezés IMEI kód alapján</li>
                         </ul>
-                        <p>Tovább a <a class="text-black" href="/regisztracio">regisztrációhoz</a> vagy <a class="text-black" href="/profil">bejelentkezéshez</a>.</p>
+                        <p>Tovább a <a class="text-black" href="{{ route('register') }}">regisztrációhoz</a> vagy <a class="text-black" href="{{ route('login') }}">bejelentkezéshez</a>.</p>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
