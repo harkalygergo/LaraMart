@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Ad;
+use App\Models\Menu;
 use App\Models\Merchant;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -116,6 +117,7 @@ class UserController extends Controller
             'user' => $user,
             'favoriteAds' => $user->favourites,
             'ads' => Ad::where('user_id', auth()->id())->get(),
+            'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
         ]);
     }
 
@@ -126,7 +128,9 @@ class UserController extends Controller
             return $this->registerHandle(request());
         }
 
-        return view('layouts.frontend.default.pages.register');
+        return view('layouts.frontend.default.pages.register', [
+            'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
+        ]);
     }
 
     public function profileUpdateFormHandle(Request $request)

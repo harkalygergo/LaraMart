@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Menu;
 use App\Models\Page;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,8 @@ class PageController extends Controller
         // if $page title contains "API" string, return 404
         if (strpos($page->title, 'API') !== false) {
             return view('layouts.frontend.default.page-api', [
-                'page' => $page
+                'page' => $page,
+                'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
             ]);
         }
 

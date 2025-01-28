@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Ad;
 use App\Models\Category;
+use App\Models\Menu;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
 
@@ -53,6 +54,7 @@ class CategoryController extends Controller
             'subnav' => $subcategories,
             'ads' => $ads,
             'title' => $title,
+            'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
         ]);
     }
 

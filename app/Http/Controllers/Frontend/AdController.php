@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Ad;
 use App\Models\Category;
+use App\Models\Menu;
 use App\Models\Merchant;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -168,6 +169,7 @@ class AdController extends Controller
             'ad' => $ad,
             'allAttributes' => (new AttributeController())->getAttributes(),
             'relatedAds' => $relatedAds,
+            'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
         ]);
     }
 
@@ -219,6 +221,7 @@ class AdController extends Controller
         return view('layouts.frontend.default.pages.list', [
             'title' => $merchant->name,
             'ads' => $ads,
+            'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
         ]);
     }
 
