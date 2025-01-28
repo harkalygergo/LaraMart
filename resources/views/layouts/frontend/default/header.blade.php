@@ -3,10 +3,8 @@
         <div class="col-1 my-auto">
             <!--i class="bi bi-list"></i-->
         </div>
-        <div class="col-8 text-start text-lg-center">
-            <a href="/">
-                ⏱RAPLACC.HU
-            </a>
+        <div class="col-8 text-start text-lg-center text-uppercase">
+            ⏱ óraplacc.hu
         </div>
         <div class="col-3 my-auto text-end">
             <a class="btn btn-primary d-none d-md-inline" title="IMEI lekérdezés" href="/telefon-adat-lekerdezes"><i class="bi bi-lock"></i></a>
