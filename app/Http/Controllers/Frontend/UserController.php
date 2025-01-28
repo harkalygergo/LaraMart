@@ -31,7 +31,7 @@ class UserController extends Controller
                 //$user->save();
 
                 // Redirect to the intended page or home
-                return redirect()->intended('/profil');
+                return redirect()->route('login');
             }
         }
         // else check if email exists in merchants
@@ -40,7 +40,7 @@ class UserController extends Controller
             if ($merchant && Hash::check($request->password, $merchant->password)) {
                 // Log the merchant in using the custom guard
                 Auth::guard('merchant')->login($merchant, true);
-                return redirect()->intended('/profil');
+                return redirect()->route('login');
             }
         }
 
@@ -82,8 +82,7 @@ class UserController extends Controller
         // Log the user in
         Auth::login($user, true);
 
-        // Redirect to the home page
-        return redirect('/profil');
+        return redirect()->route('login');
     }
 
     public function addProfilePoint(Request $request)
@@ -92,7 +91,7 @@ class UserController extends Controller
         $user->points += $request->input('amount');
         $user->save();
 
-        return redirect('/profil');
+        return redirect()->route('login');
     }
 
     public function profile()
@@ -164,7 +163,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect('/profile')->with('success', 'Profile updated successfully.');
+        return redirect()->route('login')->with('success', 'Profile updated successfully.');
     }
 
     public function addFavourite($adId)

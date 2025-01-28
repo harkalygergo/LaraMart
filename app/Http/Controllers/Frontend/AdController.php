@@ -187,7 +187,7 @@ class AdController extends Controller
 
         Ad::find($id)->delete();
 
-        return redirect('/profil');
+        return redirect()->route('login');
     }
 
     public function search()
@@ -300,6 +300,6 @@ class AdController extends Controller
         // upload the image
         $ad->addMedia(request('image'))->toMediaCollection('images', 'public');
 
-        return redirect('/profil');
+        return redirect()->route('login');
     }
 }
