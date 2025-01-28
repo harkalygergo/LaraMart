@@ -17,7 +17,7 @@
                 </div>
                 <div class="d-grid gap-2">
                     <button type="submit" class="mt-3 btn btn-fluid btn-primary">Login</button>
-                    <a href="/regisztracio" class="mt-2 btn btn-fluid btn-secondary">Register</a>
+                    <a href="{{ route('register') }}" class="mt-2 btn btn-fluid btn-secondary">Register</a>
                 </div>
             </form>
         </div>
