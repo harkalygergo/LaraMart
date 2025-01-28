@@ -5,7 +5,7 @@
         </div>
         <div class="col-8 text-start text-lg-center">
             <a href="/">
-                óraplacc.hu
+                ⏱RAPLACC.HU
             </a>
         </div>
         <div class="col-3 my-auto text-end">
