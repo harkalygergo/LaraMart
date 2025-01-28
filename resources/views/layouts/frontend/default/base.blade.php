@@ -10,7 +10,7 @@
         <meta name="robots" content="noindex, nofollow">
     @endif
 
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.png">
 
     <title>{{ env('APP_NAME') }}</title>
 
