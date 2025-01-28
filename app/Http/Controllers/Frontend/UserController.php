@@ -108,7 +108,9 @@ class UserController extends Controller
         }
 
         if (!Auth::check() && !Auth::guard('merchant')->check()) {
-            return view('layouts.frontend.default.pages.login');
+            return view('layouts.frontend.default.pages.login', [
+                'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
+            ]);
         }
 
         $user = Auth::user() ?: Auth::guard('merchant')->user();
