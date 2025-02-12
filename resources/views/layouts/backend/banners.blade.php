@@ -21,13 +21,14 @@
                 @foreach ($data as $category)
                     <tr>
                         <td>{{ $loop->index + 1 }}</td>
-                        <td>{{ $category->id }}</td>
+                        <td><img class="img-thumbnail" src="{{ $category->mediaURL }}" alt="{{ $category->id }}"></td>
                         <td>{{ $category->mediaURL }}</td>
                         <td>{{ $category->href }}</td>
                         <td>{{ $category->hrefTarget }}</td>
+                        <td>{{ $category->position }}</td>
                         <td>
                             <a href="/admin/v1/banners/edit/{{ $category->id }}" class="btn btn-primary">Szerkesztés</a>
-                            <form action="/admin/v1/banners/{{ $category->id }}" method="POST">
+                            <form action="/admin/v1/banners/delete/{{ $category->id }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Törlés</button>
