@@ -8,7 +8,6 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>ID</th>
                     <th>Név</th>
                     <th>Telefonszám</th>
                     <th>E-mail</th>
@@ -24,8 +23,7 @@
                 <tbody>
                     @foreach ($data as $user)
                         <tr>
-                            <td>{{ $loop->index + 1 }}</td>
-                            <td>{{ $user->id }}</td>
+                            <td>{{ $loop->index + 1 }}.</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->phone }}</td>
                             <td>{{ $user->email }}</td>
@@ -37,11 +35,6 @@
                             <td>{{ $user->billing_address }}</td>
                             <td>
                                 <a href="/admin/v1/user/edit/{{ $user->id }}" class="btn btn-primary">Szerkesztés</a>
-                                <form action="/admin/v1/users/{{ $user->id }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Törlés</button>
-                                </form>
                             </td>
                         </tr>
                     @endforeach
