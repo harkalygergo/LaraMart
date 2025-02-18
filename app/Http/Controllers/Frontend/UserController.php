@@ -107,14 +107,14 @@ class UserController extends Controller
         }
 
         if (!Auth::check() && !Auth::guard('merchant')->check()) {
-            return view('layouts.frontend.default.pages.login', [
+            return view(env('LAYOUT').'.pages.login', [
                 'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
             ]);
         }
 
         $user = Auth::user() ?: Auth::guard('merchant')->user();
 
-        return view('layouts.frontend.default.pages.profile', [
+        return view(env('LAYOUT').'.pages.profile', [
             'user' => $user,
             'favoriteAds' => $user->favourites,
             'ads' => Ad::where('user_id', auth()->id())->get(),
@@ -129,7 +129,7 @@ class UserController extends Controller
             return $this->registerHandle(request());
         }
 
-        return view('layouts.frontend.default.pages.register', [
+        return view(env('LAYOUT').'.pages.register', [
             'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
         ]);
     }
@@ -163,7 +163,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('login')->with('success', 'Profile updated successfully.');
+        return redirect()->route('login')->with('success', 'Profil sikeresen frissítve.');
     }
 
     public function addFavourite($adId)
