@@ -18,9 +18,14 @@ npm-debug.log
 yarn-error.log
 /.fleet
 /.idea
-/.nova
 /.vscode
 /.zed
 
-.idea
 *.log
+
+# Ignore SASS cache files
+.sass-cache/
+
+# Ignore compiled CSS files
+*.css
+*.css.map
