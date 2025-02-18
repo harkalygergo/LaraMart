@@ -34,12 +34,14 @@
         <form class="py-5" action="{{ route('editPage', $page->id) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-sm btn-danger">Törlés</button>
+            <button type="submit" class="btn btn-sm btn-danger">Végleges törlés</button>
         </form>
     </div>
     <script>
         $(document).ready(function() {
-            $('#content').summernote();
+            $('#content').summernote({
+                lang: "hu-HU"
+            });
         });
     </script>
 @endsection

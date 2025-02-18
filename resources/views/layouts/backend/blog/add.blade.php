@@ -30,7 +30,9 @@
     </div>
     <script>
         $(document).ready(function() {
-            $('#content').summernote();
+            $('#content').summernote({
+                lang: "hu-HU"
+            });
         });
     </script>
 @endsection
