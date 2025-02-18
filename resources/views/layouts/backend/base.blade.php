@@ -8,18 +8,20 @@
 
     <link rel="shortcut icon" href="/favicon.ico">
 
-    <title>LaraMart admin</title>
+    <title>{{ env('APP_NAME') }} admin</title>
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link href="/assets/summernote-0.9.0-dist/summernote-bs5.css" rel="stylesheet">
     <script src="/assets/summernote-0.9.0-dist/summernote-bs5.js"></script>
+    <script src="/assets/summernote-0.9.0-dist/lang/summernote-hu-HU.min.js"></script>
 
-<style>
+    <style>
         body {
             font-family: Arial, sans-serif;
         }
+
         .bi {
             display: inline-block;
             width: 1rem;
@@ -36,6 +38,7 @@
                 position: sticky;
                 top: 48px;
             }
+
             .navbar-search {
                 display: block;
             }
@@ -79,24 +82,24 @@
         <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-dark vh-100">
             <div class="offcanvas-md offcanvas-end bg-dark" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="sidebarMenuLabel">LaraMart admin</h5>
+                    <h5 class="offcanvas-title" id="sidebarMenuLabel">almapro.hu admin</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                     <a class="nav-link text-white mx-2 fs-4 fw-bold" aria-current="page" href="/">
-                        LaraMart admin
+                        {{ env('APP_NAME') }} admin
                     </a>
                     <hr class="text-white">
                     <ul class="nav flex-column mb-auto">
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/admin/v1">
                                 <i class="bi bi-speedometer2"></i>
-                                Dashboard
+                                Vezérlőpult
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/" target="_blank">
-                                <i class="bi bi-house"></i> View site <i class="bi bi-arrow-up-right"></i>
+                                <i class="bi bi-house"></i> Honlap megtekintése <i class="bi bi-arrow-up-right"></i>
                             </a>
                         </li>
                     </ul>
@@ -104,13 +107,13 @@
                     <hr class="text-white">
 
                     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 m-1 text-secondary text-uppercase">
-                        <span>Website configuration</span>
+                        <span>Honlap konfiguráció</span>
                     </h6>
                     <ul class="nav flex-column mb-auto">
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/admin/v1/banners">
                                 <i class="bi bi-images"></i>
-                                Banner
+                                Bannerek
                             </a>
                         </li>
                         <li class="nav-item">
@@ -128,19 +131,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/admin/v1/pages/">
                                 <i class="bi bi-layout-sidebar"></i>
-                                Pages
+                                Oldalak
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/admin/v1/categories/">
                                 <i class="bi bi-folder2-open"></i>
-                                Categories
+                                Kategóriák
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/admin/v1/attributes/">
                                 <i class="bi bi-tag"></i>
-                                Attributes
+                                Attribútumok
                             </a>
                         </li>
                     </ul>
@@ -148,43 +151,43 @@
                     <hr class="text-white">
 
                     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 m-1 text-secondary text-uppercase">
-                        <span>System</span>
+                        <span>Rendszereszközök</span>
                     </h6>
                     <ul class="nav flex-column mb-auto">
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/admin/v1/users">
                                 <i class="bi bi-people"></i>
-                                Users
+                                Felhasználók
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('showAdmins') }}">
                                 <i class="bi bi-person-workspace"></i>
-                                Administrators
+                                Adminisztrátorok
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/admin/v1/merchants">
                                 <i class="bi bi-buildings"></i>
-                                Merchants
+                                Kereskedők
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/admin/v1/users/ads/">
                                 <i class="bi bi-badge-ad"></i>
-                                User ads
+                                Felhasználói hirdetések
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/admin/v1/merchants/ads/">
                                 <i class="bi bi-badge-ad-fill"></i>
-                                Merchant ads
+                                Kereskedői hirdetések
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/admin/v1/settings">
                                 <i class="bi bi-gear"></i>
-                                Settings
+                                Beállítások
                             </a>
                         </li>
                     </ul>
@@ -193,10 +196,11 @@
 
                     <ul class="nav flex-column mb-auto">
                         <li class="nav-item">
-                            <a href="/profile" class="nav-link text-white"><i class="bi bi-person"></i> Profile</a>
+                            <a href="/profil" class="nav-link text-white"><i class="bi bi-person"></i> Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/logout" class="nav-link text-warning"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                            <a href="/kijelentkezes" class="nav-link text-warning"><i class="bi bi-box-arrow-right"></i>
+                                Kijelentkezés</a>
                         </li>
                     </ul>
                 </div>
@@ -206,7 +210,7 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 vh-100">
 
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
+                <h1 class="h2">Vezérlőpult</h1>
             </div>
 
             @yield('main')
