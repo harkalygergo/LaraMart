@@ -21,6 +21,6 @@ class MessageController extends Controller
         $message->message = request('message');
         $message->save();
 
-        return redirect()->back()->with('success', 'Message sent.');
+        return redirect()->back()->with('success', 'Üzenet elküldve.');
     }
 }
