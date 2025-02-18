@@ -22,7 +22,7 @@ class BarionController extends Controller
         }
 
         $this->demo = (env('APP_ENV') == "local");
-        $this->randomID = date('YmdHis').'-'.rand(1000, 9999);
+        $this->randomID = env('APP_NAME')."-".date('YmdHis').'-'.rand(1000, 9999);
 
         if ($this->demo) {
             $this->POSKey = env("BARION_POSKEY_DEMO");
@@ -40,8 +40,8 @@ class BarionController extends Controller
     public function createItemModel(Request $request)
     {
         $item = new \Barion\Models\Common\ItemModel();
-        $item->Name = "Points";
-        $item->Description = "Credit.";
+        $item->Name = env('APP_NAME') . " pontok";
+        $item->Description = env('APP_NAME') . " webshopban vásárolt kredit.";
         // get request from post object
         $item->Quantity = $request->input('quantity');
         $item->Unit = "pont";
@@ -57,7 +57,7 @@ class BarionController extends Controller
         $trans->POSTransactionId = $this->randomID;
         $trans->Payee = $this->login;
         $trans->Total = $request->input('quantity');
-        $trans->Comment = "Points to buy";
+        $trans->Comment = env('APP_NAME') . " pontok vásárlása";
         $trans->AddItem($this->createItemModel($request));
 
         return $trans;
@@ -75,8 +75,8 @@ class BarionController extends Controller
         $ppr->OrderNumber = $this->randomID;
         $ppr->Currency = \Barion\Enumerations\Currency::HUF;
         // get request from url
-        $ppr->RedirectUrl = "/addProfilePoint?amount=".$request->input('quantity');
-        $ppr->CallbackUrl = "/profile";
+        $ppr->RedirectUrl = env('APP_URL') . "/addProfilePoint?amount=".$request->input('quantity');
+        $ppr->CallbackUrl = env('APP_URL') . "/profil";
         $ppr->AddTransaction($this->createPaymentTransactionModel($request));
 
         return $ppr;
