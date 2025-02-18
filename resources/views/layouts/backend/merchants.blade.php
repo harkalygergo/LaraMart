@@ -9,7 +9,6 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>ID</th>
                     <th>Név</th>
                     <th>Adószám</th>
                     <th>Telefonszám</th>
@@ -23,8 +22,7 @@
                 <tbody>
                 @foreach ($data as $merchant)
                     <tr>
-                        <td>{{ $loop->index + 1 }}</td>
-                        <td>{{ $merchant->id }}</td>
+                        <td>{{ $loop->index + 1 }}.</td>
                         <td>{{ $merchant->name }}</td>
                         <td>{{ $merchant->vat }}</td>
                         <td>{{ $merchant->phone }}</td>
@@ -34,11 +32,6 @@
                         <td>{{ $merchant->address }}</td>
                         <td>
                             <a href="/admin/v1/merchant/edit/{{ $merchant->id }}" class="btn btn-primary">Szerkesztés</a>
-                            <form action="/admin/v1/merchants/{{ $merchant->id }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Törlés</button>
-                            </form>
                         </td>
                     </tr>
                 @endforeach
