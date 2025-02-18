@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
-use App\Models\Banner;
+use App\Models\Settings;
 
 class SettingsController extends Controller
 {
-    public function list()
+    public function getSettings()
     {
-        return view('layouts.backend.settings', [
-            'data' => Banner::all(),
-        ]);
-
+        return Settings::all()->pluck('value', 'key')->toArray();
     }
 }
