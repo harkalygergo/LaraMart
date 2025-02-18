@@ -49,7 +49,7 @@ class CategoryController extends Controller
         */
         $title = $category->title;
 
-        return view('layouts.frontend.default.pages.list', [
+        return view(env('LAYOUT').'.pages.list', [
             'category' => $category,
             'subnav' => $subcategories,
             'ads' => $ads,
@@ -60,7 +60,99 @@ class CategoryController extends Controller
 
     public function importCategoriesFromXML()
     {
-        $xml = simplexml_load_file('/categories.xml');
+        $csvFile = base_path().'/new-categories.csv';
+        //$csv = array_map('str_getcsv', file($csvFile));
+
+        $csv = str_getcsv(file_get_contents($csvFile), "\n");
+
+        $mainCategory = $subCategory = $subSubCategory = $subSubSubSubCategory = 0;
+
+        $category_id = 0;
+        // loop through the csv array
+        foreach ($csv as $row) {
+
+            $row = explode(';', $row);
+
+            // if it is the first row, skip it
+            if ($row[0] == 'Főkategória') {
+                continue;
+            }
+
+            //dd($row);
+
+            // főkategória
+            if ($row[0] != '' && $row[1] == '' && $row[2] == '' && $row[3] == '') {
+                $category = new Category();
+                $category->title = $row[0];
+                $category->name = $row[0];
+                $category->slug = Str::slug($row[0]);
+                $category->api_id = $row[4];
+                $category->setCreatedAt(now());
+                $category->save();
+                $mainCategory = $category->id;
+                $category_id = $category->id;
+            }
+
+            // alkategória
+            if ($row[0] != '' && $row[1] != '' && $row[2] == '' && $row[3] == '') {
+                $category = new Category();
+                $category->title = $row[1];
+                $category->name = $row[1];
+                $category->slug = Str::slug($row[0].'_'.$row[1]);
+                $category->parent_id = $mainCategory;
+                $category->api_id = $row[4];
+                $category->save();
+                $subCategory = $category->id;
+                $category_id = $category->id;
+            }
+
+            // al-alkategória
+            if ($row[0] != '' && $row[1] != '' && $row[2] != '' && $row[3] == '') {
+                $category = new Category();
+                $category->title = $row[2];
+                $category->name = $row[2];
+                $category->slug = Str::slug($row[0].'_'.$row[1].'_'.$row[2]);
+                $category->parent_id = $subCategory;
+                $category->api_id = $row[4];
+                $category->save();
+                $subSubCategory = $category->id;
+                $category_id = $category->id;
+            }
+
+            // al-al-alkategória
+            if ($row[0] != '' && $row[1] != '' && $row[2] != '' && $row[3] != '') {
+                $category = new Category();
+                $category->title = $row[3];
+                $category->name = $row[3];
+                $category->slug = Str::slug($row[0].'_'.$row[1].'_'.$row[2].'_'.$row[3]);
+                $category->parent_id = $subSubCategory;
+                $category->api_id = $row[4];
+                $category->save();
+                $subSubSubCategory = $category->id;
+                $category_id = $category->id;
+            }
+
+            /*
+            // check if category exist in the database with name $row[0]
+            $category = Category::where('name', $row[0])->first();
+            if ($category) {
+                $category_id = $category->id;
+            } else {
+                // create a new category and save it to the database
+                $category = new Category();
+                $category->title = $row[0];
+                $category->name = $row[0];
+                $category->slug = Str::slug($row[0]);
+                $category->save();
+                $category_id = $category->id;
+            }
+            */
+        }
+
+
+        dd($csv);
+
+        $xml = simplexml_load_file('https://pophone.eu/rrs/almapro-categories.xml');
 
         foreach ($xml as $xmlCategory) {
             // check if category exist in the database with name $xmlCategory->type_1
