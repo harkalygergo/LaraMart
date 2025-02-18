@@ -38,14 +38,15 @@ class PageController extends Controller
 
         // if $page title contains "API" string, return 404
         if (strpos($page->title, 'API') !== false) {
-            return view('layouts.frontend.default.page-api', [
+            return view(env('LAYOUT').'.page-api', [
                 'page' => $page,
                 'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
             ]);
         }
 
-        return view('layouts.frontend.default.page', [
-            'page' => $page
+        return view(env('LAYOUT').'.page', [
+            'page' => $page,
+            'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
         ]);
     }
 
