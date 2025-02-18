@@ -152,7 +152,7 @@ class CategoryController extends Controller
 
         dd($csv);
 
-        $xml = simplexml_load_file('https://pophone.eu/rrs/almapro-categories.xml');
+        $xml = simplexml_load_file('');
 
         foreach ($xml as $xmlCategory) {
             // check if category exist in the database with name $xmlCategory->type_1
