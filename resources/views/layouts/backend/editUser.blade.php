@@ -67,7 +67,14 @@
 
         <div class="d-grid gap mb-3">
             <button type="submit" class="btn btn-primary">Felhasználó szerkesztése</button>
-            <a href="/admin/v1/users" class="mt-5 btn btn-fluid btn-secondary">Vissza a felhasználókhoz</a>
+            <a href="/admin/v1/users" class="my-5 btn btn-fluid btn-secondary">Vissza a felhasználókhoz</a>
         </div>
     </form>
+
+    <form action="{{ route('editUser', $user->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Felhasználó és hirdetéseinek végleges törlése</button>
+    </form>
+
 @endsection
