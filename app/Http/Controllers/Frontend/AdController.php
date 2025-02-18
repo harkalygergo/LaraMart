@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Backend\SettingsController;
 use App\Models\Ad;
 use App\Models\Category;
 use App\Models\Menu;
@@ -165,8 +166,9 @@ class AdController extends Controller
         // call the importAttributes function from the AttributeController
         (new AttributeController())->importAttributes($ad);
 
-        return view('layouts.frontend.default.product', [
+        return view(env('LAYOUT').'.product', [
             'ad' => $ad,
+            'settings' => (new SettingsController())->getSettings(),
             'allAttributes' => (new AttributeController())->getAttributes(),
             'relatedAds' => $relatedAds,
             'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
@@ -201,10 +203,11 @@ class AdController extends Controller
 
         $resultsCount = $results->count();
 
-        return view('layouts.frontend.default.pages.list', [
+        return view(env('LAYOUT').'.pages.list', [
             'searchQuery' => $query,
             'title' => "Keresés: $query (találat: $resultsCount darab)",
             'ads' => $results,
+            'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
         ]);
     }
 
@@ -218,7 +221,7 @@ class AdController extends Controller
 
         $ads = Ad::where('merchant_id', $merchant->id)->get();
 
-        return view('layouts.frontend.default.pages.list', [
+        return view(env('LAYOUT').'.pages.list', [
             'title' => $merchant->name,
             'ads' => $ads,
             'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
@@ -235,7 +238,7 @@ class AdController extends Controller
             return redirect('/hirdetes/'.$ad->url);
         }
 
-        return view('layouts.frontend.default.pages.new-ad', [
+        return view(env('LAYOUT').'.pages.new-ad', [
             // get all categories from the database where parent_id is null
             'categoryType1' => Category::whereNull('parent_id')->get(),
         ]);
@@ -266,7 +269,7 @@ class AdController extends Controller
             return redirect('/hirdetes/'.$ad->url);
         }
 
-        return view('layouts.frontend.default.pages.new-ad', [
+        return view(env('LAYOUT').'.pages.new-ad', [
             'ad' => $ad,
             // get all categories from the database where parent_id is null
             'categoryType1' => Category::whereNull('parent_id')->get(),
