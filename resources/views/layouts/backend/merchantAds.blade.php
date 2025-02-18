@@ -26,12 +26,18 @@
                         <td>{{ $ad->price }}</td>
                         <td><img src="{{ asset('storage/' . $ad->image) }}" alt="{{ $ad->title }}" style="width: 100px;"></td>
                         <td>
-                            <a href="/admin/v1/user/ads/edit/{{ $ad->id }}" class="btn btn-primary">Szerkesztés</a>
-                            <form action="/admin/v1/user/ads/{{ $ad->id }}" method="POST">
+                            <a target="_blank" href="/hirdetes/{{ $ad->url }}" class="btn btn-sm btn-secondary m-1">
+                                <i class="bi bi-eye text-white"></i> megtekintés
+                            </a>
+                            <a href="/admin/v1/user/ads/edit/{{ $ad->id }}" class="btn btn-sm btn-primary m-1">
+                                <i class="bi bi-pen text-white"></i>
+                                Szerkesztés
+                            </a>
+                            <!--form action="/admin/v1/user/ads/{{ $ad->id }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Törlés</button>
-                            </form>
+                            </form-->
                         </td>
                     </tr>
                 @endforeach
