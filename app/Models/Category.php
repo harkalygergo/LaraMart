@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    private bool $status;
+
     protected $fillable = ['name', 'banner', 'description', 'parent_id'];
 
     public function parent()
