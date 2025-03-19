@@ -22,6 +22,9 @@ class Ad extends Model implements HasMedia
     private string $categoryType3;
     private string $external_link;
     private string $last_view;
+
+    private int $category_id;
+
     /*
     protected $attributes;
     */

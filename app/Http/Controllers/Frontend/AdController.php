@@ -88,19 +88,18 @@ class AdController extends Controller
         }
         // set the price to the product price
         $ad->price = $product['price'];
-        // set categoryType1 to the product categoryType1
-        $ad->categoryType1 = $product['categoryType1'];
-        // set categoryType2 to the product categoryType2
-        if (isset($product['categoryType2'])) {
-            $ad->categoryType2 = $product['categoryType2'];
-        }
-        // set categoryType3 to the product categoryType3
-        if (isset($product['categoryType3'])) {
-            $ad->categoryType3 = $product['categoryType3'];
-        }
+        $ad->category_id = $product['category_id'];
+
         // set the attributes to the product attributes
         if (isset($product['attributes'])) {
             $ad->attributes = json_encode($product['attributes'], JSON_UNESCAPED_UNICODE);
+        }
+
+        if (isset($product['category_id'])) {
+            $category = Category::where('api_id', $product['category_id'])->first();
+            if ($category) {
+                $ad->category_id = $category->id;
+            }
         }
 
         if ($user) {
@@ -125,9 +124,9 @@ class AdController extends Controller
 
             // set the url to the product slug
             if (isset($product['slug'])) {
-                $ad->url = $product['slug'];
+                $ad->url = $merchant->id . '-' . $product['id'] . '-' . $product['slug'];
             } else {
-                $ad->url = Str::slug($product['subject']).'-'.now()->timestamp;
+                $ad->url = $merchant->id . '-' . $product['id'] . '-' . Str::slug($product['subject']).'-'.now()->timestamp;
             }
 
             // set the images to the product images
@@ -196,6 +195,10 @@ class AdController extends Controller
     {
         $query = request('s');
 
+        if (request('q') == 'imei') {
+            return redirect('/telefon-adat-lekerdezes?imei='.$query);
+        }
+
         $results = Ad::where('title', 'like', "%$query%")
             ->orWhere('description', 'like', "%$query%")
             ->orWhere('attributes', 'like', "%$query%")
@@ -232,7 +235,7 @@ class AdController extends Controller
     public function create()
     {
         // if post request
-        if (request()->isMethod('post')) {
+        if (request()->isMethod('post') || request()->isMethod('put')) {
             $ad = $this->new(request()->all(), null, auth()->user());
 
             return redirect('/hirdetes/'.$ad->url);
@@ -240,7 +243,8 @@ class AdController extends Controller
 
         return view(env('LAYOUT').'.pages.new-ad', [
             // get all categories from the database where parent_id is null
-            'categoryType1' => Category::whereNull('parent_id')->get(),
+            'categories' => CategoryController::getCategoriesAsSelectOptions(),
+            'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
         ]);
     }
 
@@ -272,7 +276,8 @@ class AdController extends Controller
         return view(env('LAYOUT').'.pages.new-ad', [
             'ad' => $ad,
             // get all categories from the database where parent_id is null
-            'categoryType1' => Category::whereNull('parent_id')->get(),
+            'categories' => CategoryController::getCategoriesAsSelectOptions(),
+            'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
         ]);
     }
 
