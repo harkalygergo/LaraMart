@@ -1,6 +1,6 @@
 # LaraMart | Laravel based marketplace
 
-###### Version: 2025.03.19.2
+###### Version: 2025.03.19.3
 
 LaraMart web application is an online marketplace management tool based on Laravel PHP framework made by @harkalygergo. All rights reserved!
 
@@ -23,6 +23,7 @@ LaraMart web application is an online marketplace management tool based on Larav
 6. Migrate database tables with `php artisan migrate` command
 7. Build CSS with `npm run build`
 7. Register a new user profile and make it admin in database with changing `is_admin` column.
+8. Add cron job for `php artisan schedule:run` command
 
 ---
 
