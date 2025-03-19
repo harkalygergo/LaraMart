@@ -25,6 +25,7 @@ class User extends Authenticatable
     private array $favourites;
     private bool $is_admin;
     private int $points;
+    private bool $home_delivery;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;

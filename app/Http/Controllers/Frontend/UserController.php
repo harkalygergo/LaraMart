@@ -119,6 +119,7 @@ class UserController extends Controller
             'favoriteAds' => $user->favourites,
             'ads' => Ad::where('user_id', auth()->id())->get(),
             'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
+            'groupedMessages' => (new MessageController())->getMessages(),
         ]);
     }
 
@@ -156,6 +157,7 @@ class UserController extends Controller
         $user->billing_zip = (empty($user->billing_zip) && empty($request->billingZip)) ? $request->zip : $request->billingZip;
         $user->billing_city = (empty($user->billing_city) && empty($request->billingCity)) ? $request->city : $request->billingCity;
         $user->billing_address = (empty($user->billing_address) && empty($request->billingAddress)) ? $request->address : $request->billingAddress;
+        $user->home_delivery = $request->home_delivery;
 
         if (!empty($request->password)) {
             $user->password = Hash::make($request->password);
