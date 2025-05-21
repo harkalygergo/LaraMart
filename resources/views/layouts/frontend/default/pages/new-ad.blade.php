@@ -1,10 +1,10 @@
 <!-- create a form for new Ad -->
-@extends('layouts.frontend.default.base')
+@extends(env('LAYOUT').'.base')
 
 @if (isset($ad))
-    @section('title', 'Modify ad')
+    @section('title', 'Hirdetés módosítása')
 @else
-    @section('title', 'Create new ad')
+    @section('title', 'Hirdetés feladása')
 @endif
 
 @section('main')
@@ -14,25 +14,28 @@
             <h2 class="py-3 text-center">
                 @if (isset($ad))
                     @php
-                        $formURL = '/ad/edit/' . $ad['id'];
+                        $formURL = '/hirdetes/edit/' . $ad['id'];
                     @endphp
-                    Modfiy ad
+                    Hirdetés módosítása
                 @else
                     @php
                         $formURL = '/hirdetes/feladas';
                     @endphp
-                    Create new ad
+                    Hirdetés feladása
                 @endif
             </h2>
         </div>
         <div class="col-12">
-            <div class="row text-center">
+            <div class="row text-center" id="media-container">
                 @if (isset($ad))
+                    <h6>A képek sorrendje drag-and-drop módon módosítható.</h6>
                     @foreach ($ad->getMedia($ad['id']) as $media)
-                        <div class="col">
+                        <div class="col draggable-media" data-media-id="{{ $media->id }}">
                             <img src="{{ $media->getUrl() }}" class="d-block w-100" alt="banner1">
                             <br>
-                            <a class="text-decoration-none text-black" href="/hirdetes/{{ $ad['id'] }}/media/{{ $ad['user_id'] }}/delete/{{ $media->id }}"><small>kép eltávolítása</small></a>
+                            <a class="text-decoration-none text-black" href="/hirdetes/{{ $ad['id'] }}/media/{{ $ad['user_id'] }}/delete/{{ $media->id }}">
+                                <small>kép eltávolítása</small>
+                            </a>
                         </div>
                     @endforeach
                 @endif
@@ -60,11 +63,13 @@
                 </div>
                 <!-- loop throe $categoryType1 as select options -->
                 <div class="form-group mb-3">
-                    <label for="categoryType1">Kategória:</label>
-                    <select class="form-control" id="categoryType1" name="categoryType1" required>
+                    <label for="category_id">Kategória:</label>
+                    <select class="form-control" id="category_id" name="category_id" required>
                         <option value="">- válassz kategóriát -</option>
-                        @foreach ($categoryType1 as $category)
-                            <option value="{{ $category->name }}" @isset($ad) @if($ad['categoryType1']==$category->name) selected @endif @endisset  >{{ $category->name }}</option>
+                        @foreach ($categories as $categoryID => $category)
+                            <option value="{{ $categoryID }}" @isset($ad) @if($ad['$category']==$categoryID) selected @endif @endisset  >
+                                {{ $category }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -73,7 +78,7 @@
                 @foreach(\App\Models\Attribute::all() as $attribute)
                     <div class="form-group mb-3">
                         <label for="attribute_{{ $attribute->slug }}">{{ $attribute->title }}</label>
-                        <input type="text" class="form-control" id="attribute_{{ $attribute->slug }}" name="attributes[{{ $attribute->slug }}]" value="@isset($ad){{$ad->getAttributeValue($attribute->id)}}@endisset">
+                        <input type="text" class="form-control" id="attribute_{{ $attribute->slug }}" name="attributes[{{ $attribute->slug }}]" value="@isset($ad){{$ad->getAdAttributeValueByAttributeSlug($attribute->slug)}}@endisset">
                     </div>
                 @endforeach
                 <div class="d-grid gap mb-3">
@@ -83,4 +88,41 @@
             </form>
         </div>
     </div>
+    @if (isset($ad))
+        <script>
+            window.onload = function() {
+                jQuery(document).ready(function() {
+                    jQuery("#media-container").sortable({
+                        items: ".draggable-media",
+                        cursor: "move",
+                        handle: "img",
+                        update: function(event, ui) {
+                            let mediaOrder = [];
+                            jQuery(".draggable-media").each(function() {
+                                mediaOrder.push($(this).data("media-id"));
+                            });
+                            console.log(mediaOrder);
+
+                            // AJAX hívás a sorrend mentéséhez
+                            jQuery.ajax({
+                                url: "/ad/image/reorder",
+                                method: "POST",
+                                data: {
+                                    _token: jQuery('meta[name="csrf-token"]').attr('content'),
+                                    media_order: mediaOrder,
+                                    adID: {{ $ad['id'] }}
+                                },
+                                success: function(response) {
+                                    console.log("Sorrend sikeresen mentve");
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error("Hiba történt a mentés során:", error);
+                                }
+                            });
+                        }
+                    }).disableSelection();
+                });
+            }
+        </script>
+    @endif
 @endsection

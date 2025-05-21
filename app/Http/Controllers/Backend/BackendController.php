@@ -7,6 +7,7 @@ use App\Models\Ad;
 use App\Models\Attribute;
 use App\Models\Category;
 use App\Models\Merchant;
+use App\Models\ProductType;
 use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -46,6 +47,13 @@ class BackendController extends Controller
     {
         return view('layouts.backend.merchant', [
             'merchant' => Merchant::find($id),
+        ]);
+    }
+
+    public function showProductTypes()
+    {
+        return view('layouts.backend.productTypes.index', [
+            'data' => ProductType::all(),
         ]);
     }
 

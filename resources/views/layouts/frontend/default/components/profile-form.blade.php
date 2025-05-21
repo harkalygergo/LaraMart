@@ -1,11 +1,11 @@
-<form action="/profile" method="post">
+<form action="/profil" method="post">
     @csrf
     @method('PUT')
     <div class="row">
         <div class="col">
             <h4 class="pt-3 text-center">Alapadatok</h4>
             <div class="form-group mb-3">
-                <label for="name">Name:</label>
+                <label for="name">Név:</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{ $user['name'] }}" required>
             </div>
             <div class="form-group mb-3">
@@ -34,6 +34,14 @@
             <div class="form-group mb-3">
                 <label for="address">Utca, házszám:</label>
                 <input type="text" class="form-control" id="address" name="address" value="{{ $user['address'] }}">
+            </div>
+            <div class="form-group mb-3">
+                <label for="home_delivery">Házhoz szállítást:</label>
+                <!-- add home_delivery as select-option -->
+                <select class="form-select" name="home_delivery">
+                    <option value="1" {{ $user['home_delivery'] == 1 ? 'selected' : '' }}>vállalok</option>
+                    <option value="0" {{ $user['home_delivery'] == 0 ? 'selected' : '' }}>nem vállalok</option>
+                </select>
             </div>
         </div>
         <div class="col">

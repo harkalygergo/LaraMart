@@ -1,12 +1,12 @@
 <!-- create a register form -->
-@extends('layouts.frontend.default.base')
+@extends(env('LAYOUT').'.base')
 
 <!-- create a form only with email and password -->
 @section('main')
     <div class="row justify-content-center">
         <div class="col-md-6">
             <h2>Regisztráció</h2>
-            <form action="{{ route('register') }}" method="POST">
+            <form action="/regisztracio" method="POST">
                 @csrf
                 <!-- create name, phone input fields -->
                 <div class="form-group mb-3">

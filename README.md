@@ -25,6 +25,31 @@ LaraMart web application is an online marketplace management tool based on Larav
 7. Register a new user profile and make it admin in database with changing `is_admin` column.
 8. Add cron job for `php artisan schedule:run` command
 9. Add database settings keys: HEAD_CODE_LOGGED_IN_NOT_ADMIN
+10. Update Composer dependencies with `composer update` command
+
+## Documentation
+
+```bash
+# Clear Application Cache:  
+php artisan cache:clear
+# Clear Route Cache:  
+php artisan route:clear
+# Clear Configuration Cache:  
+php artisan config:clear
+# Clear Compiled Views Cache:  
+php artisan view:clear
+# Clear Event Cache:  
+php artisan event:clear
+# Clear All Cache:
+php artisan optimize:clear
+# Clear All Cache (Laravel 8+):
+php artisan optimize
+# migrate
+php artisan migrate
+```
+
+## How to install?
+
 ---
 
 All rights reserved! &copy; Copyright Harkály Gergő (https://github.com/harkalygergo)

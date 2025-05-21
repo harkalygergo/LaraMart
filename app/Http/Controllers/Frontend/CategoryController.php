@@ -3,13 +3,68 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Ad;
+use App\Models\Attribute;
 use App\Models\Category;
 use App\Models\Menu;
+use App\Models\ProductType;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
+    // create edit Category
+    public function createCategory()
+    {
+        $categories = Category::where('parent_id', null)->where('status', true)->orderBy('name', 'asc')->get();
+        return view(env('LAYOUT').'.pages.create-category', [
+            'categories' => $categories,
+            'title' => 'Kategória létrehozás',
+            'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
+        ]);
+    }
+
+    public function edit($id)
+    {
+        $category = Category::find($id);
+        if (!$category) {
+            abort(404);
+        }
+
+        // handle post request
+        if (request()->isMethod('put')) {
+            $category->name = request('name');
+            $category->slug = request('slug')!=='' ? request('slug') : Str::slug(request('name'));
+            $category->description = request('description');
+            $category->parent_id = request('parent_id');
+            $category->product_type_id = request('product_type_id');
+            //$category->status = request('status') ? true : false;
+            $category->save();
+        }
+
+        // get all product types;
+        $productTypes = (ProductType::orderBy('name', 'asc')->get())->toArray();
+        $categories = Category::where('status', true)->orderBy('name', 'asc')->get();
+        // return view with category
+        return view('layouts.backend.category.edit', [
+            'categories' => $categories,
+            'category' => $category,
+            'availableProductTypes' => $productTypes,
+            'title' => 'Kategória szerkesztés',
+            'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
+        ]);
+
+
+
+        $categories = Category::where('parent_id', null)->where('status', true)->orderBy('name', 'asc')->get();
+        return view(env('LAYOUT').'.pages.create-category', [
+            'categories' => $categories,
+            'category' => $category,
+            'title' => 'Kategória szerkesztés',
+            'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
+        ]);
+    }
+
+
     public static function getCategoriesAsSelectOptions()
     {
         $options = [];
@@ -58,7 +113,45 @@ class CategoryController extends Controller
         $ads = Ad::where('category_id', $category->id)
             ->orWhereIn('category_id', $subcategories_ids)
             ->orWhereIn('category_id', $subSubCategories)
+
+            // or where attributes contains any of the attributes in the query string
+            ->when(request()->query(), function ($query) {
+                $query->where(function ($query) {
+                    foreach (request()->query() as $key => $values) {
+                        foreach ($values as $value) {
+                            $query->orWhere('attributes', 'like', '%"'.$key.'":"'.$value.'"%');
+                        }
+                    }
+                });
+            })
+
             ->get();
+
+        $attributes = [];
+        foreach ($ads as $ad) {
+            $adAttributes = json_decode($ad->attributes, true);
+
+            foreach ($adAttributes as $adAttributeSlug => $adAttributeValue) {
+
+                if (!array_key_exists($adAttributeSlug, $attributes)) {
+                    $attributes[$adAttributeSlug] = [];
+                }
+
+                if (!in_array($adAttributeValue, $attributes[$adAttributeSlug]) && $adAttributeValue != '') {
+                    $attributes[$adAttributeSlug][] = $adAttributeValue;
+                }
+            }
+
+        }
+
+        foreach ($attributes as $attributeKey => $attributeValue) {
+            if (empty($attributes[$attributeKey])) {
+                unset($attributes[$attributeKey]);
+            }
+        }
+
+
+
         /*
         foreach($subcategories as $subcategory) {
             $ads = Ad::where('categoryType2', $subcategory->name)->get();
@@ -87,7 +180,15 @@ class CategoryController extends Controller
         */
         $title = $category->title;
 
+        $availableAttributes = [];
+        $allAvailableAttributes = Attribute::all();
+        foreach ($allAvailableAttributes as $attribute) {
+            $availableAttributes[$attribute->slug] = $attribute->title;
+        }
+
         return view(env('LAYOUT').'.pages.list', [
+            'attributes' => $attributes,
+            'availableAttributes' => $availableAttributes,
             'category' => $category,
             'subnav' => $subcategories,
             'ads' => $ads,
@@ -190,7 +291,10 @@ class CategoryController extends Controller
 
         dd($csv);
 
-        $xml = simplexml_load_file('');
+
+        $csv = array_map('str_getcsv', file('https://pophone.eu/rrs/almapro-categories.csv'));
+
+        $xml = simplexml_load_file('https://pophone.eu/rrs/almapro-categories.xml');
 
         foreach ($xml as $xmlCategory) {
             // check if category exist in the database with name $xmlCategory->type_1

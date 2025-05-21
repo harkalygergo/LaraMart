@@ -146,6 +146,12 @@
                                 Attribútumok
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/admin/v1/product-types/">
+                                <i class="bi bi-earbuds"></i>
+                                Termék típusok
+                            </a>
+                        </li>
                     </ul>
 
                     <hr class="text-white">

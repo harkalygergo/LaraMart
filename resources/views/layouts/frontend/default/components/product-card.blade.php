@@ -1,24 +1,24 @@
 <!-- set image variable -->
 @if (!empty($ad['merchant_id']))
     @php
-        $image = asset(json_decode($ad['images'], true)["0"]);
+        //$image = asset(json_decode($ad['images'], true)["0"]);
         $images = json_decode($ad['images'], true);
     @endphp
 @endif
 @if (!empty($ad['user_id']))
     @php
-        $image = $ad->getMedia($ad['id'])->first()->getUrl();
+        //$image = $ad->getMedia($ad['id'])->first()->getUrl();
         $images = $ad->getMedia($ad['id'])->map(fn($media) => $media->getUrl(''));
     @endphp
 @endif
 
 <div class="col p-0">
-    <div class="card p-0 m-0 p-sm-3 shadow mx-2">
+    <div class="card m-0 p-0 p-md-2 shadow mx-1 mx-md-3 h-100">
         <div id="carouselIndicator{{ $ad['id'] }}" class="carousel slide">
             <div class="carousel-inner">
                 @foreach ($images as $image)
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                        <a href="/ad/{{ $ad['url'] }}">
+                        <a href="/hirdetes/{{ $ad['url'] }}">
                             <img src="{{ $image }}" class="card-img-top" alt="{{ $ad['title'] }}" loading="lazy">
                         </a>
                     </div>
@@ -39,25 +39,25 @@
             </h5>
             <p class="card-text">
                 <span class="source-sans-pro-black">
-                    <a class="text-black text-decoration-none" href="/hirdetes/{{ $ad['url'] }}">
+                    <a class="text-decoration-none text-secondary" href="/hirdetes/{{ $ad['url'] }}">
                         {{ Str::limit($ad['title'], 50) }}
                     </a>
                 </span>
-                <span class="d-none d-sm-block">
+                <span class="d-none d-sm-block text-secondary">
                     Feltöltő:
                     @if ($ad['user_id'])
                         {{ $ad['user']['name'] }}
                     @endif
                     @if ($ad['merchant_id'])
-                        <a href="/kereskedo/{{ $ad['merchant']['slug'] }}" class="text-decoration-none text-black">
+                        <a href="/kereskedo/{{ $ad['merchant']['slug'] }}" class="text-decoration-none text-secondary">
                             {{ $ad['merchant']['name'] }}
                         </a>
                     @endif
                 </span>
             </p>
         </div>
-        <div class="card-footer text-center bg-white d-grid">
-            <a href="/hirdetes/{{ $ad['url'] }}" class="btn btn-primary btn-fluid text-capitalize px-sm-5 py-sm-2">
+        <div class="card-footer text-center bg-transparent d-grid">
+            <a href="/hirdetes/{{ $ad['url'] }}" class="btn btn-primary btn-fluid text-capitalize px-sm-5 py-sm-3">
                 Megnézem
             </a>
             @if (isset($edit))

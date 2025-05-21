@@ -1,7 +1,7 @@
-@extends('layouts.frontend.default.base')
+@extends(env('LAYOUT').'.base')
 
 @section('main')
-    <h1 class="px-4 py-2" style="background:linear-gradient(to bottom, #bb5499, #fd841b);border-radius:50px;color:white;">
+    <h1 class="px-4 py-2">
         Profil
     </h1>
     <div class="row bg-white px-3 py-5" style="border-radius: 25px;">
@@ -58,65 +58,109 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="messages" role="tabpanel" aria-labelledby="messages-tab" tabindex="1">
                     <h4 class="pt-3 text-center">Üzenetek</h4>
-                    @php
-                        $messages = \App\Models\Message::where('user_id', $user['id'])->orWhere('recipient_id', $user['id'])->orderBy('created_at', 'desc')->get();
-                    @endphp
 
-                    @if ($messages->count())
+
+                    @if ($groupedMessages->count())
+
                         <div class="accordion" id="accordionExample">
-                            @foreach ($messages as $message)
+                            @foreach($groupedMessages as $groupKey => $groupedMessage)
+
                                 @php
-                                    $otherUser = ($message['user_id'] == $user['id']) ? $message['recipient_id'] : $message['user_id'];
-                                    $otherUser = \App\Models\User::find($otherUser);
+                                    list($adId, $from, $to) = explode('-', $groupKey);
+                                    $ad = \App\Models\Ad::find($adId);
                                 @endphp
-                                @php
-                                    $ad = \App\Models\Ad::find($message['ad_id']);
-                                @endphp
+
+                                @if ($from == $user['id'])
+                                    @php
+                                        $user2 = \App\Models\User::find($to);
+                                    @endphp
+                                @else
+                                    @php
+                                        $user2 = \App\Models\User::find($from);
+                                    @endphp
+                                @endif
+
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button @if(!$loop->first) collapsed @endif" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $message['id'] }}" aria-expanded="true" aria-controls="collapseOne">
+                                        <button class="accordion-button @if(!$loop->first) collapsed @endif" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$groupKey}}" aria-expanded="true" aria-controls="collapseOne">
                                         <span class="px-2">
-                                            <i class="bi bi-person"></i> {{ $otherUser['name'] }}
+                                            <i class="bi bi-person"></i> {{ $user2->name }}
                                         </span>
-                                        <span class="px-2">
-                                            <i class="bi bi-badge-ad"></i> {{ $ad['title'] }}
+                                            <span class="px-2">
+                                            <i class="bi bi-badge-ad"></i> {{ $ad->title }}
                                         </span>
                                         </button>
                                     </h2>
-                                    <div id="collapse{{ $message['id'] }}" class="accordion-collapse collapse @if($loop->first) show @endif" data-bs-parent="#accordionExample">
+                                    <div id="collapse{{$groupKey}}" class="accordion-collapse collapse @if($loop->first) show @endif" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <div class="text-end">
                                                 <small class="badge text-bg-light">
-                                                    <a class="text-black text-decoration-none" target="_blank" href="/hirdetes/{{ $ad['url'] }}">
+                                                    <a class="text-black text-decoration-none" target="_blank" href="/hirdetes/{{ $ad->url }}">
                                                         <i class="bi bi-badge-ad p-1"></i>
-                                                        {{ $ad['title'] }}
+                                                        {{ $ad->title }}
                                                         <i class="bi bi-box-arrow-up-right"></i>
                                                     </a>
                                                 </small>
                                             </div>
                                             <div class="p-2">
-                                                <small><i class="bi bi-calendar p-1"></i> {{ $message['created_at'] }}</small>
-                                                <br>{{ $message['message'] }}
+
+                                                @foreach($groupedMessage as $message)
+
+                                                    @php
+                                                        $from = \App\Models\User::find($message->from);
+                                                    @endphp
+
+                                                    @if($from->id == $user['id'])
+                                                        @php
+                                                            $fromName = 'Én';
+                                                            $class = 'text-end';
+                                                        @endphp
+                                                    @else
+                                                        @php
+                                                            $fromName = $from->name;
+                                                            $class = 'p-1 rounded bg-light text-start';
+                                                        @endphp
+                                                    @endif
+
+                                                    <p class="{{ $class }}">
+                                                        <small>
+                                                            {{ $message->created_at }}
+                                                            |
+                                                            {{ $fromName }}
+                                                            :
+                                                        </small>
+                                                        <br>
+                                                        {{ $message->message }}
+                                                    </p>
+
+                                                @endforeach
+
                                             </div>
                                             <form action="/message/new" method="post">
+
                                                 @csrf
                                                 @method('post')
-                                                <input type="hidden" name="recipient_id" value="{{ $otherUser['id'] }}">
-                                                <input type="hidden" name="ad" value="{{ $ad['id'] }}">
+
+                                                <input type="hidden" name="to" value="{{ $user2->id }}">
+                                                <input type="hidden" name="ad" value="{{ $ad->id }}">
                                                 <textarea name="message" class="form-control v-100" placeholder="Válasz..." required></textarea>
                                                 <br><button type="submit" class="btn btn-fluid btn-primary">Válasz elküldése</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
+
                             @endforeach
                         </div>
+
+
+
                     @else
                         <p>Nincsenek üzeneteid.</p>
                     @endif
                 </div>
                 <div class="tab-pane" id="userdata" role="tabpanel" aria-labelledby="userdata-tab" tabindex="1">
-                    @include('layouts.frontend.default.components.profile-form')
+                    @include(env('LAYOUT').'.components.profile-form')
                 </div>
                 <div class="tab-pane" id="deposit" role="tabpanel" aria-labelledby="deposit-tab" tabindex="2">
                     <h4 class="pt-3 text-center">Egyenleg</h4>
@@ -150,10 +194,10 @@
                     <h4 class="pt-3 text-center">Hirdetések</h4>
                     <a href="/hirdetes/feladas" class="btn btn-primary">Hirdetés feladása</a>
 
-                    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-4 py-4">
+                    <div class="row row-cols-2 row-cols-sm-2 row-cols-lg-4 g-4 py-4">
                         @foreach ($ads as $ad)
                             @if ($ad)
-                                @include('layouts.frontend.default.components.product-card', [
+                                @include(env('LAYOUT').'.components.product-card', [
                                     'ad' => $ad,
                                     'edit' => true,
                                     'delete' => true
@@ -166,7 +210,7 @@
                 </div>
                 <div class="tab-pane" id="favourites" role="tabpanel" aria-labelledby="settings-tab" tabindex="4">
 
-                    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-4 py-4">
+                    <div class="row row-cols-2 row-cols-sm-2 row-cols-lg-4 g-4 py-4">
                         @if (!empty($favoriteAds))
                             @php
                                 $favoriteAds = json_decode($favoriteAds, true);
@@ -177,7 +221,7 @@
                                 @endphp
 
                                 @if ($record)
-                                    @include('layouts.frontend.default.components.product-card', [
+                                    @include(env('LAYOUT').'.components.product-card', [
                                         'ad' => $record
                                     ])
                                 @endif

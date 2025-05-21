@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\BackendController;
+use App\Http\Controllers\Backend\ProductType\ProductTypeController;
 use App\Http\Controllers\Frontend\AdController;
 use App\Http\Controllers\Frontend\BarionController;
 use App\Http\Controllers\Frontend\BlogController;
@@ -30,6 +31,10 @@ Route::match(['get', 'put'], '/hirdetes/edit/{id}', [AdController::class, 'edit'
 Route::delete('/hirdetes/delete/{id}', [AdController::class, 'delete']);
 Route::get('/hirdetes/{adID}/media/{userID}/delete/{mediaID}', [AdController::class, 'deleteMedia']);
 
+Route::post('/ad/image/reorder', [AdController::class, 'reorderMedia'])->name('ad.image.reorder');
+
+
+
 Route::get('/kategoria/import', [CategoryController::class, 'importCategoriesFromXML']);
 Route::get('/kategoria/{slug}', [CategoryController::class, 'showCategory']);
 
@@ -37,6 +42,7 @@ Route::match(['get', 'post', 'put'], '/profil', [UserController::class, 'profile
 Route::match(['get', 'post', 'put'], '/addProfilePoint', [UserController::class, 'addProfilePoint'])->name('addProfilePoint');
 
 Route::match(['get', 'post'], '/regisztracio', [UserController::class, 'registerForm'])->name('register');
+Route::match(['get', 'post'], '/password-reset', [UserController::class, 'passwordReset'])->name('passwordReset');
 
 Route::get('/telefon-adat-lekerdezes', [IMEIController::class, 'index'])->name('telefon-adat-lekerdezes');
 
@@ -69,10 +75,18 @@ Route::middleware(['auth'])->group(function () {
             Route::get('users/ads/', [BackendController::class, 'showUserAds']);
             Route::get('merchants/ads/', [BackendController::class, 'showMerchantAds']);
             Route::get('attributes/', [BackendController::class, 'showAttributes']);
+            Route::get('product-types/', [BackendController::class, 'showProductTypes']);
+
+            // category
             Route::get('categories', [BackendController::class, 'showCategories']);
+            Route::match(['get', 'post', 'put', 'delete'], 'category/edit/{id}', [CategoryController::class, 'edit'])->name("editCategory");
+
+
             Route::get('pages/', [\App\Http\Controllers\Backend\PageController::class, 'showPages']);
             Route::match(['get', 'post', 'put', 'delete'], 'page/add', [\App\Http\Controllers\Backend\PageController::class, 'addPage'])->name('addPage');
             Route::match(['get', 'post', 'put', 'delete'], 'page/edit/{page}', [\App\Http\Controllers\Backend\PageController::class, 'action'])->name('editPage');
+            Route::match(['get', 'post', 'put', 'delete'], 'product-type/add', [ProductTypeController::class, 'newProductType'])->name('newProductType');
+            Route::match(['get', 'post', 'put', 'delete'], 'product-type/edit/{id}', [ProductTypeController::class, 'editProductType'])->name('editProductType');
             Route::match(['get', 'post', 'put', 'delete'], 'settings/', [BackendController::class, 'showSettings'])->name('admin_v1_settings');
             Route::get('banners/', [\App\Http\Controllers\Backend\BannerController::class, 'list'])->name('banners');
             Route::match(['get', 'post', 'put', 'delete'], 'banners/new', [\App\Http\Controllers\Backend\BannerController::class, 'create'])->name('newBanner');

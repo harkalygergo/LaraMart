@@ -1,10 +1,10 @@
-@extends('layouts.frontend.default.base')
+@extends(env('LAYOUT').'.base')
 
 @section('main')
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2>Login</h2>
-            <form action="/profile" method="POST">
+            <h2>Bejelentkezés</h2>
+            <form action="/profil" method="POST">
                 @csrf
                 @method('POST')
                 <div class="form-group">
@@ -16,8 +16,9 @@
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
                 <div class="d-grid gap-2">
-                    <button type="submit" class="mt-3 btn btn-fluid btn-primary">Login</button>
-                    <a href="{{ route('register') }}" class="mt-2 btn btn-fluid btn-secondary">Register</a>
+                    <button type="submit" class="mt-3 btn btn-fluid btn-primary">Bejelentkezés</button>
+                    <a href="{{ route('register') }}" class="mt-2 btn btn-fluid btn-secondary">Regisztráció</a>
+                    <a href="{{ route('passwordReset') }}" class="mt-2 btn btn-fluid btn-outline-secondary">Elfelejtett jelszó</a>
                 </div>
             </form>
         </div>

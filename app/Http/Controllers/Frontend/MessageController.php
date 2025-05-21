@@ -37,7 +37,10 @@ class MessageController extends Controller
             $recipient->name,
             $recipient->email,
             'Új üzenet érkezett',
-            request('message').'<br><br><br>'.env('APP_URL'),
+            $ad->title.' hirdetéshez érkezett üzenet: <br><br><br>'.
+                $loggedInUser->name.' üzenete: <br><br><br>'.
+                request('message').'<br><br><br>'.env('APP_URL')
+            ,
         );
 
         return redirect()->back()->with('success', 'Üzenet elküldve.');
@@ -49,7 +52,7 @@ class MessageController extends Controller
 
         $groupedMessages = Message::where('from', $userId)
             ->orWhere('to', $userId)
-            ->orderBy('created_at', 'desc')
+            ->orderBy('created_at', 'asc')
             ->get()
             ->groupBy(function ($item) {
                 return $item->ad_id . '-' . min($item->from, $item->to) . '-' . max($item->from, $item->to);

@@ -1,0 +1,127 @@
+Főkategória;Alkategória;Al-alkategória;Al-al-alkategória;Kategória azonosító
+Apple;;;;100000
+Apple;iPhone;;;110000
+Apple;iPhone;iPhone / iPhone 1 / iPhone 2G;;110100
+Apple;iPhone;iPhone 3G;;110200
+Apple;iPhone;iPhone 3G;iPhone 3G;110201
+Apple;iPhone;iPhone 3G;iPhone 3GS;110202
+Apple;iPhone;iPhone 4;;110300
+Apple;iPhone;iPhone 4;iPhone 4;110301
+Apple;iPhone;iPhone 4;iPhone 4S;110302
+Apple;iPhone;iPhone 5;;110400
+Apple;iPhone;iPhone 5;iPhone 5;110401
+Apple;iPhone;iPhone 5;iPhone 5C;110402
+Apple;iPhone;iPhone 5;iPhone 5S;110403
+Apple;iPhone;iPhone 6;;110500
+Apple;iPhone;iPhone 6;iPhone 6;110501
+Apple;iPhone;iPhone 6;iPhone 6 Plus;110502
+Apple;iPhone;iPhone 6;iPhone 6S;110503
+Apple;iPhone;iPhone 6;iPhone 6S Plus;110504
+Apple;iPhone;iPhone SE;;110600
+Apple;iPhone;iPhone SE;iPhone SE 2016 (I. generáció);110601
+Apple;iPhone;iPhone SE;iPhone SE 2020 (II. generáció);110602
+Apple;iPhone;iPhone SE;iPhone SE 2022 (III. generáció);110603
+Apple;iPhone;iPhone 7;;110700
+Apple;iPhone;iPhone 7;iPhone 7;110701
+Apple;iPhone;iPhone 7;iPhone 7 Plus;110702
+Apple;iPhone;iPhone 8;;110800
+Apple;iPhone;iPhone 8;iPhone 8;110801
+Apple;iPhone;iPhone 8;iPhone 8 Plus;110802
+Apple;iPhone;iPhone X;;110900
+Apple;iPhone;iPhone X;iPhone X;110901
+Apple;iPhone;iPhone X;iPhone XR;110902
+Apple;iPhone;iPhone X;iPhone XS;110903
+Apple;iPhone;iPhone X;iPhone XS Max;110904
+Apple;iPhone;iPhone 11;;111000
+Apple;iPhone;iPhone 11;iPhone 11;111001
+Apple;iPhone;iPhone 11;iPhone 11 Pro;111002
+Apple;iPhone;iPhone 11;iPhone 11 Pro Max;111003
+Apple;iPhone;iPhone 12;;111100
+Apple;iPhone;iPhone 12;iPhone 12;111101
+Apple;iPhone;iPhone 12;iPhone 12 mini;111102
+Apple;iPhone;iPhone 12;iPhone 12 Pro;111103
+Apple;iPhone;iPhone 12;iPhone 12 Pro Max;111104
+Apple;iPhone;iPhone 13;;111200
+Apple;iPhone;iPhone 13;iPhone 13;111201
+Apple;iPhone;iPhone 13;iPhone 13 mini;111202
+Apple;iPhone;iPhone 13;iPhone 13 Pro;111203
+Apple;iPhone;iPhone 13;iPhone 13 Pro Max;111204
+Apple;iPhone;iPhone 14;;111300
+Apple;iPhone;iPhone 14;iPhone 14;111301
+Apple;iPhone;iPhone 14;iPhone 14 Plus;111302
+Apple;iPhone;iPhone 14;iPhone 14 Pro;111303
+Apple;iPhone;iPhone 14;iPhone 14 Pro Max;111304
+Apple;iPhone;iPhone 15;;111400
+Apple;iPhone;iPhone 15;iPhone 15;111401
+Apple;iPhone;iPhone 15;iPhone 15 Plus;111402
+Apple;iPhone;iPhone 15;iPhone 15 Pro;111403
+Apple;iPhone;iPhone 15;iPhone 15 Pro Max;111404
+Apple;iPhone;iPhone 16;;111500
+Apple;iPhone;iPhone 16;iPhone 16;111501
+Apple;iPhone;iPhone 16;iPhone 16 Plus;111502
+Apple;iPhone;iPhone 16;iPhone 16 Pro;111503
+Apple;iPhone;iPhone 16;iPhone 16 Pro Max;111504
+Apple;iPad;;;120000
+Apple;iPad;iPad;;120100
+Apple;iPad;iPad;iPad (1. generáció);120101
+Apple;iPad;iPad;iPad 2;120102
+Apple;iPad;iPad;iPad 3;120103
+Apple;iPad;iPad;iPad 4;120104
+Apple;iPad;iPad;iPad 5;120105
+Apple;iPad;iPad;iPad 6;120106
+Apple;iPad;iPad;iPad 7;120107
+Apple;iPad;iPad;iPad 8;120108
+Apple;iPad;iPad;iPad 9;120109
+Apple;iPad;iPad;iPad 10;120110
+Apple;iPad;iPad mini;;120200
+Apple;iPad;iPad mini;iPad mini (1. generáció);120201
+Apple;iPad;iPad mini;iPad mini 2;120202
+Apple;iPad;iPad mini;iPad mini 3;120203
+Apple;iPad;iPad mini;iPad mini 4;120204
+Apple;iPad;iPad mini;iPad mini 5;120205
+Apple;iPad;iPad mini;iPad mini 6;120206
+Apple;iPad;iPad mini;iPad mini 7;120207
+Apple;iPad;iPad Air;;120300
+Apple;iPad;iPad Air;iPad Air (1. generáció);120301
+Apple;iPad;iPad Air;iPad Air 2;120302
+Apple;iPad;iPad Air;iPad Air 3;120303
+Apple;iPad;iPad Air;iPad Air 4;120304
+Apple;iPad;iPad Air;iPad Air 5;120305
+Apple;iPad;iPad Air;iPad Air 6;120306
+Apple;iPad;iPad Pro;;120400
+Apple;iPad;iPad Pro;iPad Pro (1. generáció);120401
+Apple;iPad;iPad Pro;iPad Pro 2;120402
+Apple;iPad;iPad Pro;iPad Pro 3;120403
+Apple;iPad;iPad Pro;iPad Pro 4;120404
+Apple;iPad;iPad Pro;iPad Pro 5;120405
+Apple;iPad;iPad Pro;iPad Pro 6;120406
+Apple;iPad;iPad Pro;iPad Pro 7;120407
+Apple;MacBook;;;130000
+Apple;MacBook;MacBook Pro;;130100
+Apple;MacBook;MacBook Air;;130200
+Apple;MacBook;MacBook Pro Retina;;130300
+Apple;Watch;;;140000
+Apple;Watch;Watch 1;;140100
+Apple;Watch;Watch 2;;140200
+Apple;Watch;Watch 3;;140300
+Apple;Watch;Watch 4;;140400
+Apple;Watch;Watch 5;;140500
+Apple;Watch;Watch 6;;140600
+Apple;Watch;Watch 7;;140700
+Apple;Watch;Watch 8;;140800
+Apple;Watch;Watch 9;;140900
+Apple;Watch;Watch 10;;141000
+Apple;Watch;Watch SE;;141100
+Apple;Watch;Watch SE;Watch SE 1;141101
+Apple;Watch;Watch SE;Watch SE 2;141102
+Apple;Watch;Watch SE;Watch SE 3;141103
+Apple;Watch;Watch Ultra;;141200
+Apple;Watch;Watch Ultra;Watch Ultra;141201
+Apple;Watch;Watch Ultra;Watch Ultra 2;141202
+Apple;iMac;;;150000
+Apple;Airpods;;;160000
+Apple;TV;;;170000
+Android;;;;200000
+Samsung;;;;300000
+Kiegészítők;;;;800000
+Egyéb;;;;900000

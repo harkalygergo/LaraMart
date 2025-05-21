@@ -1,8 +1,15 @@
+@php
+    use App\Http\Controllers\Backend\SettingsController;
+    $settings = (new SettingsController())->getSettings();
+@endphp
+
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="light">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @if (config('app.env') === 'production')
         <meta name="robots" content="index, follow">
@@ -10,19 +17,76 @@
         <meta name="robots" content="noindex, nofollow">
     @endif
 
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
 
-    <title>{{ env('APP_NAME') }}</title>
+    <!-- check if user is not logged in -->
+    @if (!auth()->check())
+        {!! $settings['HEAD_CODE_NOT_LOGGED_IN'] !!}
+    @else
+        <!-- if user is logged in, but not an admin -->
+        @if (!auth()->user()->is_admin)
+            @if (isset($settings['HEAD_CODE_LOGGED_IN_NOT_ADMIN']))
+                {!! $settings['HEAD_CODE_LOGGED_IN_NOT_ADMIN'] !!}
+            @endif
+        @endif
+    @endif
 
+    <title>@yield('title'){{ $settings['site_title'] }}</title>
+    <meta name="description" content="{{ $settings['site_description'] }}">
+
+    @if (isset($settings['GOOGLE_SITE_VERIFICATION']) && $settings['GOOGLE_SITE_VERIFICATION'])
+        <meta name="google-site-verification" content="{{ $settings['GOOGLE_SITE_VERIFICATION'] }}" />
+    @endif
+
+    <!--
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.brandcomstudio.com/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.brandcomstudio.com/vendor/twbs/bootstrap-icons/font/bootstrap-icons.min.css">
+    <script src="https://cdn.brandcomstudio.com/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Corben:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #9e6740;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+        }
+
+        .corben-regular {
+            font-family: "Corben", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .corben-bold {
+            font-family: "Corben", serif;
+            font-weight: 700;
+            font-style: normal;
+        }
+    </style>
+
+
 </head>
 <body id="frontend">
 
 <div class="container py-3">
 
-    @include('layouts.frontend.default.header')
+    @include(env('LAYOUT') . '.header')
 
-    @include('layouts.frontend.default.nav')
+    @include(env('LAYOUT').'.nav', [
+        'menus' => $menus
+    ])
 
     @if (session('success'))
         <div class="alert alert-success">
@@ -40,14 +104,18 @@
         </div>
     @endif
 
-    <main class="p-3">
+    <main>
 
         @yield('main')
 
     </main>
 </div>
 
-@include('layouts.frontend.default.footer')
+@include(env('LAYOUT').'.footer')
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.14.0/jquery-ui.min.js" integrity="sha256-Fb0zP4jE3JHqu+IBB9YktLcSjI1Zc6J2b6gTjB0LpoM=" crossorigin="anonymous"></script>
 
 </body>
 </html>

@@ -27,4 +27,9 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function productType()
+    {
+        return $this->belongsTo(ProductType::class, 'product_type_id');
+    }
 }

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row d-none d-lg-flex">
     <div class="col-md-12 py-2">
         <form method="get" action="/kereses">
             <div class="input-group">

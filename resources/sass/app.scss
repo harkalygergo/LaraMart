@@ -1,2 +1,198 @@
 @import '../../node_modules/bootstrap/scss/bootstrap';
 @import '../../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+@import url('https://fonts.googleapis.com/css2?family=Sue+Ellen+Francisco&display=swap');
+
+@font-face {
+    font-family: "Source Sans Pro";
+    src: url("../../public/assets/fonts/source-sans-pro/SourceSansPro-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Source Sans Pro Black";
+    src: url("../../public/assets/fonts/source-sans-pro/SourceSansPro-Black.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Source Sans Pro Bold";
+    src: url("../../public/assets/fonts/source-sans-pro/SourceSansPro-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Source Sans Pro Light";
+    src: url("../../public/assets/fonts/source-sans-pro/SourceSansPro-Light.ttf") format("truetype");
+}
+
+:root {
+    --primary-color: #BB539A;
+    --secondary-color: #FD841B;
+    --success-color: #4CAF50;
+    --info-color: #2196F3;
+    --warning-color: #FFC107;
+    --danger-color: #FF5252;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+}
+
+/* CUSTOM CLASSES */
+.linear-gradient {
+    background: linear-gradient(to bottom, #bb5499, #fd841b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.source-sans-pro-black {
+    font-family: "Source Sans Pro Black", sans-serif;
+}
+
+.sue-ellen-francisco-regular {
+    font-family: "Sue Ellen Francisco", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.primary-color {
+    color: var(--primary-color);
+}
+
+/*** GLOBAL ***/
+body {
+    font-family: "Source Sans Pro", sans-serif;
+    /*background: linear-gradient(to bottom, #f9f9f9, #faedf6);*/
+    background-color: #f9f9f9;
+
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: 0 300px; /* Start the image 100px lower */
+    background-attachment: scroll;
+
+    .table > :not(caption) > * > * {
+        background-color: transparent;
+    }
+}
+
+footer {
+    /*background: linear-gradient(to bottom, #c565a5, #ebaad5);*/
+    color: white; /* Optional: Ensure text is readable */
+    background-image: url("/assets/img/footer-background.jpg");
+    background-repeat:no-repeat;
+    background-color:#eba9d6;
+}
+
+body#frontend {
+    .nav-item {
+        background-color:#f2f2f2;
+        border-radius:20px 20px 0 0;
+    }
+}
+
+input#product-offer::placeholder {
+    text-decoration: line-through;
+}
+
+nav .col {
+    width: 11.11%;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: black;
+    color: white !important;
+}
+
+
+.nav-tabs .nav-link {
+    color: black;
+    font-weight: bold;
+}
+
+.nav-tabs .nav-link.active {
+    color: #BB539A;
+    font-weight: bold;
+    border:10px;
+    border-bottom:0;
+}
+
+main table tbody tr {
+    border-style: hidden;
+}
+
+main .table > :not(caption) > * > * {
+    padding: .2rem;
+}
+
+main table .bi {
+    color: #BB539A;
+}
+
+h1 {
+    font-size:28px;
+    letter-spacing: -0.015em;
+    font-family: "Source Sans Pro Black", sans-serif;
+}
+
+h2 {
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn {
+    border-radius: 50px; /* Optional: Round the corners */
+    border: none;
+}
+
+.btn.btn-primary {
+    background: linear-gradient(to bottom, #bb5499, #fd841b);
+    color: white; /* Optional: Ensure text is readable */
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+input.form-control {
+    border-radius: 50px; /* Optional: Round the corners */
+    border-color: #ba539a; /* Optional: Change the border color */
+}
+
+input.form-control::placeholder {
+    color: #bc529a;
+}
+
+.card {
+    border-radius: 20px;
+    background-color:rgba(255, 255, 255, 0.7);
+
+    .card-title {
+        color: #da6a5c;
+    }
+
+    img.card-img-top {
+        padding: 10px;
+        border-radius: 20px;
+        width:100%;
+        object-fit: cover;
+        height:250px;
+    }
+
+    .card-footer {
+        border-radius: 20px;
+        border-top:0;
+    }
+}
+
+.circle-background {
+    background-color: #e8cbdf;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+
+    img {
+        height:100px;
+        width:auto;
+    }
+}
+
+.list-group-item {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}

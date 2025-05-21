@@ -146,6 +146,25 @@ class AdController extends Controller
         return $ad;
     }
 
+    public function reorderMedia()
+    {
+        $media = request('media_order');
+        $adID = request('adID');
+
+        // if media is not empty
+        if (!empty($media)) {
+            foreach ($media as $key => $value) {
+                // find media where model_id is adID and id is value
+                $mediaItem = Media::where('model_id', $adID)->where('id', $value)->first();
+                // update the order column
+                $mediaItem->order_column = $key;
+                $mediaItem->save();
+            }
+        }
+
+        return response()->json(['success' => true]);
+    }
+
     public function showAd($slug)
     {
         $ad = Ad::where('url', $slug)->first();

@@ -1,11 +1,11 @@
-@extends('layouts.frontend.default.base')
+@extends(env('LAYOUT').'.base')
 
 @section('main')
-    @include('layouts.frontend.default.components.header-forms')
+    @include(env('LAYOUT').'.components.header-forms')
 
     <div class="row pt-5 pb-3">
         <div class="col">
-            <h1 class="px-4 py-2" style="background:linear-gradient(to bottom, #bb5499, #fd841b);border-radius:50px;color:white;">
+            <h1 class="px-4 py-2">
                 {{ $page['title'] }}
             </h1>
         </div>

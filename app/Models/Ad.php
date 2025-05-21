@@ -53,4 +53,12 @@ class Ad extends Model implements HasMedia
     {
         return $this->belongsTo(Merchant::class);
     }
+
+    public function getAdAttributeValueByAttributeSlug(string $key)
+    {
+        $attributes = json_decode($this->attributes['attributes'], true);
+
+        return $attributes[$key] ?? null;
+    }
+
 }

@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Email\EmailController;
 use App\Models\Ad;
 use App\Models\Menu;
 use App\Models\Merchant;
@@ -10,6 +11,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -28,10 +32,16 @@ class UserController extends Controller
             if (Hash::check($request->password, $user->password)) {
                 // Log the user in
                 Auth::login($user, true);
-                //$user->save();
+                // add cookie to remember the login type is user
+                //setcookie('login_type', 'user', time() + (86400 * 30), "/"); // 86400 = 1 day
 
-                // Redirect to the intended page or home
-                return redirect()->route('login');
+
+                //$user->save();
+                return redirect()
+                    ->route('login')
+                    ->withHeaders([
+                        'Set-Cookie' => cookie('logged_in_account_type', 'user', 60*24*30)->__toString(),
+                    ]);
             }
         }
         // else check if email exists in merchants
@@ -40,13 +50,65 @@ class UserController extends Controller
             if ($merchant && Hash::check($request->password, $merchant->password)) {
                 // Log the merchant in using the custom guard
                 Auth::guard('merchant')->login($merchant, true);
-                return redirect()->route('login');
+
+                return redirect()
+                    ->route('login')
+                    ->withHeaders([
+                        'Set-Cookie' => cookie('logged_in_account_type', 'merchant', 60*24*30)->__toString(),
+                    ]);
             }
         }
 
         // If authentication fails, redirect back with an error message
         return back()->withErrors([
             'email' => 'A megadott adatok nem megfelelőek.',
+        ]);
+    }
+
+    public function passwordReset()
+    {
+        // Check if the request is a POST request
+        if (request()->isMethod('post')) {
+            // Handle the password reset logic here
+            return $this->passwordResetHandle(request());
+        }
+
+        return view(env('LAYOUT').'.pages.password-reset', [
+            'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
+        ]);
+    }
+
+    public function passwordResetHandle(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        // Check if the email exists in the users table
+        $user = User::where('email', $request->email)->first();
+        if ($user) {
+            // Generate a password reset token
+            $token = Str::random(60);
+
+            $user->password = $token;
+            $user->save();
+
+            (new EmailController())->sendEmail(
+                env('MAIL_FROM_NAME'),
+                env('MAIL_FROM_ADDRESS'),
+                $user->name,
+                $user->email,
+                'Új jelszó',
+                $token.'<br><br><br>'.env('APP_URL'),
+            );
+
+            // redirect to login page
+            return redirect()->route('login')->with('success', 'A jelszó visszaállító linket elküldtük az email címére.');
+        }
+
+        // If the email doesn't exist, redirect back with an error message
+        return redirect()->back()->withErrors([
+            'email' => 'A megadott email cím nem található.',
         ]);
     }
 
