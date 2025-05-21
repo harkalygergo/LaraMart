@@ -18,7 +18,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-6">
             <div id="carouselIndicator" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     @if (!empty($ad['merchant_id']))
@@ -77,7 +77,7 @@
                 </button>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6">
             <h2 class="text-start d-none d-sm-block">
                 @if (!empty($ad['category']))
                     @if (!empty($ad['category']['parent']))
@@ -311,7 +311,7 @@
     </div-->
     <div class="row pt-5">
         <div class="col text-center">
-            <h2 class="sue-ellen-francisco-regular display-3 primary-color" style="transform: rotate(-5deg);">Mások ezt nézik most</h2>
+            <h2 class="sue-ellen-francisco-regular display-3 primary-color">Mások ezt nézik most</h2>
         </div>
     </div>
 
