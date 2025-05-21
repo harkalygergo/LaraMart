@@ -64,7 +64,7 @@
                     @endforeach
                     <button type="submit" class="btn btn-lg btn-primary btn-fluid text-capitalize mx-auto d-flex">
                         <i class="bi bi-funnel"></i>
-                        Szűrés indítása
+                        Szűrés
                     </button>
                 </form>
             @endif

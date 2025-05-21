@@ -55,6 +55,13 @@
         }
 
         .btn-primary {
+            background-color: white;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            border-radius:50px;
+        }
+
+        .btn-primary:hover {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
         }

@@ -13,8 +13,11 @@
             <br>új és használt órák online piactere
         </div>
         <div class="col-5 col-sm-4 my-auto text-end">
-            <a class="btn btn-primary" title="profil" href="{{ route('login') }}"><i class="bi bi-person"></i></a>
-            <a class="btn btn-primary d-none d-sm-none d-md-none d-lg-inline-block" href="{{ route('login') }}"> Ingyenes hirdetésfeladás </a>
+            <a class="btn btn-primary" title="profil" href="{{ route('login') }}"><i class="bi bi-person"></i> Fiók</a>
+            <a class="btn btn-primary d-none d-sm-none d-md-none d-lg-inline-block fw-bold" href="{{ route('login') }}">
+                <i class="bi bi-watch"></i>
+                ingyenes hirdetésfeladás
+            </a>
         </div>
     </div>
 </header>
