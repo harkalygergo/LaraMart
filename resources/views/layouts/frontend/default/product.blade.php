@@ -257,7 +257,7 @@
                         <p>
                             <small>
                                 <i class="bi bi-pin"></i> {{ $ad['user']['zip'] }} {{ $ad['user']['city'] }}, Magyarország
-                                <span class="text-end"><strong>Házhozszállítás:</strong> {{ $ad['user']['home_delivery'] ? 'vállalok' : 'nem vállalok' }}</span>
+                                <span class="text-end"><strong>Postázás: </strong> {{ $ad['user']['home_delivery'] ? 'vállalok' : 'nem vállalok' }}</span>
                                 <br><i class="bi bi-clock"></i> Utoljára elérhető: {{ $ad['user']['last_activity'] }}
                             </small>
                         </p>
@@ -279,7 +279,7 @@
                         <p>
                             <small>
                                 <i class="bi bi-pin"></i> {{ $ad['merchant']['zip'] }} {{ $ad['merchant']['city'] }}, Magyarország
-                                <span class="text-end"><strong>Házhozszállítás:</strong> vállalok</span>
+                                <span class="text-end"><strong>Postázás: </strong> vállalok</span>
                                 <br><i class="bi bi-clock"></i> Utoljára elérhető: {{ $ad['merchant']['last_activity'] }}
                             </small>
                         </p>
