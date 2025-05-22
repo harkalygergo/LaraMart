@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\HomepageController;
 use App\Http\Controllers\Frontend\IMEIController;
+use App\Http\Controllers\Frontend\InfoController;
 use App\Http\Controllers\Frontend\MessageController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\UserController;
@@ -22,6 +23,10 @@ Route::get('/kereskedo/{slug}', [AdController::class, 'showMerchantAds']);
 // frontend blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+
+// frontend info
+Route::get('/info', [InfoController::class, 'index'])->name('info.index');
+Route::get('/info/{slug}', [InfoController::class, 'show'])->name('info.show');
 
 Route::get('/importAttributes', [\App\Http\Controllers\Frontend\AttributeController::class, 'importAttributes']);
 
