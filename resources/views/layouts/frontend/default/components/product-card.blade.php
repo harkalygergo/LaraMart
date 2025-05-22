@@ -40,11 +40,12 @@
             <p class="card-text">
                 <span class="source-sans-pro-black">
                     <a class="text-decoration-none text-secondary" href="/hirdetes/{{ $ad['url'] }}">
-                        {{ Str::limit($ad['title'], 50) }}
+                        <b>{{ Str::limit($ad['title'], 50) }}</b>
                     </a>
                 </span>
                 <span class="d-none d-sm-block text-secondary">
-                    Feltöltő:
+                    <small>
+                    Hirdető:
                     @if ($ad['user_id'])
                         {{ $ad['user']['name'] }}
                     @endif
@@ -53,12 +54,13 @@
                             {{ $ad['merchant']['name'] }}
                         </a>
                     @endif
+                    </small>
                 </span>
             </p>
         </div>
         <div class="card-footer text-center bg-transparent d-grid">
-            <a href="/hirdetes/{{ $ad['url'] }}" class="btn btn-primary btn-fluid text-capitalize px-sm-5 py-sm-3">
-                Megnézem
+            <a href="/hirdetes/{{ $ad['url'] }}" class="btn btn-primary btn-fluid text-capitalize">
+                <i class="bi bi-eye"></i> megnézem
             </a>
             @if (isset($edit))
                 <a href="/hirdetes/edit/{{ $ad['id'] }}" class="btn btn-warning btn-fluid text-capitalize px-5 py-2 my-2">

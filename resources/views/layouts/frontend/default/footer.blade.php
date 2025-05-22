@@ -42,7 +42,7 @@
     </div>
     <div class="container pt-5">
         <div class="row">
-            <div class="col text-center">
+            <div class="col text-center text-white-50">
                 .: Copyright 2024 &copy; {{ env('APP_NAME') }} :: Minden jog fenntartva! :.
             </div>
         </div>

@@ -1,22 +1,25 @@
 <header class="py-3">
     <div class="row">
-        <div class="col-2 col-sm-4 my-auto">
+        <div class="col-2 col-sm-2 col-lg-4 my-auto">
             <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="font-size:2rem;color:#ba539a;">
                 <i class="bi bi-list"></i>
             </a>
         </div>
-        <div class="col-5 col-sm-4 text-start text-md-center">
+        <div class="col-7 col-sm-6 col-lg-4 text-start text-md-center">
             <a class="corben-bold text-dark text-decoration-none" href="/">
-                <span class="display-4">⌚</span>
+                <span class="display-4 d-none d-lg-inline-block">⌚</span>
                 <span class="fs-1" style="color:#9e6740;">óraplacc.hu</span>
             </a>
-            <br>új és használt órák online piactere
+            <p>új és használt órák piactere</p>
         </div>
-        <div class="col-5 col-sm-4 my-auto text-end">
-            <a class="btn btn-primary" title="profil" href="{{ route('login') }}"><i class="bi bi-person"></i> Fiók</a>
+        <div class="col-3 col-sm-4 col-lg-4 my-auto text-end">
+            <a class="btn btn-primary" title="profil" href="{{ route('login') }}">
+                <i class="bi bi-person"></i>
+                <span class="d-none d-sm-inline-block">Fiók</span>
+            </a>
             <a class="btn btn-primary d-none d-sm-none d-md-none d-lg-inline-block fw-bold" href="{{ route('login') }}">
                 <i class="bi bi-watch"></i>
-                ingyenes hirdetésfeladás
+                <span class="d-none d-lg-inline-block">ingyenes</span> hirdetésfeladás
             </a>
         </div>
     </div>
