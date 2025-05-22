@@ -11,7 +11,7 @@
 
     <div class="row pt-3 pb-3">
         <div class="col">
-            <h1 class="px-4 py-2">
+            <h1 class="px-4 py-2 corben-bold">
                 {{ $ad['title'] }}
             </h1>
         </div>
