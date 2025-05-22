@@ -181,20 +181,14 @@ class CategoryController extends Controller
         $title = $category->title;
 
         $availableAttributes = [];
-        $allAttributes = \App\Models\Attribute::all();
-        foreach ($allAttributes as $attribute) {
-            $availableAttributes[$attribute['slug']] = $attribute['icon'];
-        }
-
-        $availableFilterAttributes = [];
-        foreach ($allAttributes as $attribute) {
-            $availableFilterAttributes[$attribute['slug']] = $attribute['icon'];
+        $allAvailableAttributes = Attribute::all();
+        foreach ($allAvailableAttributes as $attribute) {
+            $availableAttributes[$attribute->slug] = $attribute->title;
         }
 
         return view(env('LAYOUT').'.pages.list', [
             'attributes' => $attributes,
             'availableAttributes' => $availableAttributes,
-            'availableFilterAttributes' => $availableFilterAttributes,
             'category' => $category,
             'subnav' => $subcategories,
             'ads' => $ads,
