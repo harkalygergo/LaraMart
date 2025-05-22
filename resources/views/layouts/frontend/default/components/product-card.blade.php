@@ -52,6 +52,7 @@
                         @foreach ($attributes as $attributeName => $attributeValue)
                             {{ $attributeValue }},
                         @endforeach
+                         ...
                     </small>
                 @endif
                 <!--span class="d-none d-sm-block text-secondary">
