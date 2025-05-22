@@ -48,7 +48,6 @@
                         $attributes = json_decode($ad['attributes'], true);
                     @endphp
                     @foreach ($attributes as $attributeName => $attributeValue)
-                        <br>
                         <span class="text-secondary">
                                 <i class="{{ $availableAttributes[$attributeName] }}"></i>: {{ $attributeValue }}
                         </span>

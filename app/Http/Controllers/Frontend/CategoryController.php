@@ -181,9 +181,9 @@ class CategoryController extends Controller
         $title = $category->title;
 
         $availableAttributes = [];
-        $allAvailableAttributes = Attribute::all();
-        foreach ($allAvailableAttributes as $attribute) {
-            $availableAttributes[$attribute->slug] = $attribute->title;
+        $allAttributes = \App\Models\Attribute::all();
+        foreach ($allAttributes as $attribute) {
+            $availableAttributes[$attribute['slug']] = $attribute['icon'];
         }
 
         return view(env('LAYOUT').'.pages.list', [
