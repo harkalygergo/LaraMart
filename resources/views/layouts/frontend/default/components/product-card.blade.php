@@ -34,12 +34,12 @@
             </button>
         </div>
         <div class="card-body">
-            <h5 class="card-title linear-gradient source-sans-pro-black">
+            <h5 class="card-title linear-gradient source-sans-pro-black fw-bold">
                 {{ number_format($ad['price'], 0, '', ' ') }} Ft
             </h5>
             <p class="card-text">
                 <span class="source-sans-pro-black">
-                    <a class="text-decoration-none text-secondary" href="/hirdetes/{{ $ad['url'] }}">
+                    <a class="text-decoration-none text-secondary corben-regular" href="/hirdetes/{{ $ad['url'] }}">
                         <b>{{ Str::limit($ad['title'], 50) }}</b>
                     </a>
                 </span>
@@ -48,13 +48,13 @@
                     @php
                         $attributes = json_decode($ad['attributes'], true);
                     @endphp
-                    <span class="text-secondary">
+                    <small class="text-secondary">
                         @foreach ($attributes as $attributeName => $attributeValue)
                             {{ $attributeValue }},
                         @endforeach
-                    </span>
+                    </small>
                 @endif
-                <span class="d-none d-sm-block text-secondary">
+                <!--span class="d-none d-sm-block text-secondary">
                     <small>
                     Hirdető:
                     @if ($ad['user_id'])
@@ -66,7 +66,7 @@
                         </a>
                     @endif
                     </small>
-                </span>
+                </span-->
             </p>
         </div>
         <div class="card-footer text-center bg-transparent d-grid">
