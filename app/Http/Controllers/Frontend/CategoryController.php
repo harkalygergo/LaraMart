@@ -186,9 +186,15 @@ class CategoryController extends Controller
             $availableAttributes[$attribute['slug']] = $attribute['icon'];
         }
 
+        $availableFilterAttributes = [];
+        foreach ($allAttributes as $attribute) {
+            $availableFilterAttributes[$attribute['slug']] = $attribute['icon'];
+        }
+
         return view(env('LAYOUT').'.pages.list', [
             'attributes' => $attributes,
             'availableAttributes' => $availableAttributes,
+            'availableFilterAttributes' => $availableFilterAttributes,
             'category' => $category,
             'subnav' => $subcategories,
             'ads' => $ads,

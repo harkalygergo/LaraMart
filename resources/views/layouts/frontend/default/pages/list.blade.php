@@ -55,7 +55,7 @@
                 <form method="get">
                     <h5 class="px-4 py-2 mt-4">Termékszűrés</h5>
                     @foreach ($attributes as $attributeKey => $attributeValues)
-                        <strong>{{ $availableAttributes[$attributeKey] }}</strong>
+                        <strong>{{ $availableFilterAttributes[$attributeKey] }}</strong>
                         @foreach ($attributeValues as $attributeValue)
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="{{$attributeKey}}[]" value="{{ $attributeValue }}" id="{{$attributeKey}}___{{$attributeValue}}">
