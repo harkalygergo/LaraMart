@@ -50,7 +50,7 @@
                     @endphp
                     <span class="text-secondary">
                         @foreach ($attributes as $attributeName => $attributeValue)
-                            {{ $attributeValue }}
+                            {{ $attributeValue }},
                         @endforeach
                     </span>
                 @endif
