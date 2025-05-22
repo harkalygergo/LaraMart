@@ -44,14 +44,15 @@
                     </a>
                 </span>
                 @if (isset($ad['attributes']))
+                    <br>
                     @php
                         $attributes = json_decode($ad['attributes'], true);
                     @endphp
-                    @foreach ($attributes as $attributeName => $attributeValue)
-                        <span class="text-secondary">
-                                <i class="{{ $availableAttributes[$attributeName] }}"></i>: {{ $attributeValue }}
-                        </span>
-                    @endforeach
+                    <span class="text-secondary">
+                        @foreach ($attributes as $attributeName => $attributeValue)
+                            {{ $attributeValue }}
+                        @endforeach
+                    </span>
                 @endif
                 <span class="d-none d-sm-block text-secondary">
                     <small>
