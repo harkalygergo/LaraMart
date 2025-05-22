@@ -5,6 +5,7 @@
 
     <!-- check if $category is set -->
     @if (isset($category))
+        <h1 class="py-3 text-center">{{ $category['name'] }}</h1>
         @php
             $imagePath = public_path('assets/img/kategoria-banner/kategoria-' . $category['slug'] . '.png');
         @endphp

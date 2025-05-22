@@ -69,8 +69,8 @@
                 </li>
             @endforeach
             <li class="list-group item">
-                <a class="text-decoration-none text-black p-2" href="/blog">
-                    Blog
+                <a class="text-decoration-none text-black p-2" href="{{ route('info.index') }}">
+                    Info
                 </a>
             </li>
         </ul>

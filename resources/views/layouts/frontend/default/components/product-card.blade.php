@@ -43,6 +43,17 @@
                         <b>{{ Str::limit($ad['title'], 50) }}</b>
                     </a>
                 </span>
+                @if (isset($ad['attributes']))
+                    @php
+                        $attributes = json_decode($ad['attributes'], true);
+                    @endphp
+                    @foreach ($attributes as $attributeName => $attributeValue)
+                        <br>
+                        <span class="text-secondary">
+                                <i class="{{ $availableAttributes[$attributeName] }}"></i>: {{ $attributeValue }}
+                        </span>
+                    @endforeach
+                @endif
                 <span class="d-none d-sm-block text-secondary">
                     <small>
                     Hirdető:

@@ -15,7 +15,21 @@ class HomepageController extends Controller
         // get page by slug, where slug is "/"
         $page = Page::where('slug', '/')->first();
 
+        // available attributes
+        $availableAttributes = [];
+
+        $allAttributes = \App\Models\Attribute::all();
+        foreach ($allAttributes as $attribute) {
+            $availableAttributes[$attribute['slug']] = $attribute['icon'];
+        }
+
+
         return view(env('LAYOUT').'.homepage', [
+            // get all attributes from database order by position
+            'availableAttributes' => $availableAttributes,
+
+
+
             'page' => $page,
             // get all ads from database order by created_at desc
             'ads' => Ad::orderBy('created_at', 'desc')->get(),
