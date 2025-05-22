@@ -20,31 +20,34 @@
 
     <!-- if isset subnav, loop through -->
     @if (isset($subnav))
-        <div class="row flex-nowrap overflow-auto text-center pt-3 pb-5 @if(count($subnav)<5) justify-content-lg-center @endif">
-            @foreach ($subnav as $subnavitem)
-                <div class="col" style="max-width:150px;max-height: 150px;">
-                    @php
-                        $imagePath = public_path('assets/img/nav/' . strtolower(str_replace(' ', '', str_replace(['Használt', 'Apple'], '', $subnavitem['title']))) . '.png');
-                    @endphp
-                    @if (file_exists($imagePath))
-                        <div class="circle-background">
+        <!-- is subnav is not empty -->
+        @if (count($subnav) > 0)
+            <div class="row flex-nowrap overflow-auto text-center pt-3 pb-5 @if(count($subnav)<5) justify-content-lg-center @endif">
+                @foreach ($subnav as $subnavitem)
+                    <div class="col" style="max-width:150px;max-height: 150px;">
+                        @php
+                            $imagePath = public_path('assets/img/nav/' . strtolower(str_replace(' ', '', str_replace(['Használt', 'Apple'], '', $subnavitem['title']))) . '.png');
+                        @endphp
+                        @if (file_exists($imagePath))
+                            <div class="circle-background">
+                                <a class="text-black text-decoration-none" href="{{ $subnavitem['slug'] }}">
+                                    <img src="{{ asset('assets/img/nav/' . strtolower(str_replace(' ', '', str_replace(['Használt', 'Apple'], '', $subnavitem['title']))) . '.png') }}" alt="{{ $subnavitem['title'] }}" style="height:100px;width:auto;">
+                                </a>
+                                <p>{{ $subnavitem['name'] }}</p>
+                            </div>
+                        @else
                             <a class="text-black text-decoration-none" href="{{ $subnavitem['slug'] }}">
-                                <img src="{{ asset('assets/img/nav/' . strtolower(str_replace(' ', '', str_replace(['Használt', 'Apple'], '', $subnavitem['title']))) . '.png') }}" alt="{{ $subnavitem['title'] }}" style="height:100px;width:auto;">
+                                <button type="button" class="btn" style="border:8px solid #9e6740;height: 120px;width: 120px;color: #9e6740;">
+                                    <span class="p-1 d-block fw-bold">
+                                        {{ $subnavitem['name'] }}
+                                    </span>
+                                </button>
                             </a>
-                            <p>{{ $subnavitem['name'] }}</p>
-                        </div>
-                    @else
-                        <a class="text-black text-decoration-none" href="{{ $subnavitem['slug'] }}">
-                            <button type="button" class="btn" style="border:8px solid #9e6740;height: 120px;width: 120px;color: #9e6740;">
-                                <span class="p-1 d-block fw-bold">
-                                    {{ $subnavitem['name'] }}
-                                </span>
-                            </button>
-                        </a>
-                    @endif
-                </div>
-            @endforeach
-        </div>
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+        @endif
     @endif
 
     <div class="row">
