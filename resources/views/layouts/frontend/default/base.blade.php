@@ -53,10 +53,20 @@
     <style>
         :root {
             --primary-color: #9e6740;
+            --secondary-color: #f5efeb;
         }
 
         .primary-color {
             color: var(--primary-color);
+        }
+
+        body {
+            background-color: var(--secondary-color);
+        }
+
+        input.form-control {
+            border-color: var(--primary-color);
+            border-radius: 50px;
         }
 
         .btn-primary {

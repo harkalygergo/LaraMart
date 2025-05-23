@@ -1,7 +1,7 @@
 <header class="py-3">
     <div class="row">
         <div class="col-2 col-sm-2 col-lg-4 my-auto">
-            <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="font-size:2rem;color:#ba539a;">
+            <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="font-size:2rem;color:var(--primary-color);">
                 <i class="bi bi-list"></i>
             </a>
         </div>
@@ -29,11 +29,11 @@
     <div class="col py-2">
         <form method="get" action="/kereses">
             <div class="input-group">
-                <button class="btn btn-primary" type="submit" id="button-search" style="background:white;color:#ba539a;border:1px solid #ba539a;border-right:none;">
+                <button class="btn btn-primary" type="submit" id="button-search" style="background:white;color:var(--primary-color);border:1px solid var(--primary-color);border-right:none;">
                     <i class="bi bi-search"></i>
                 </button>
                 <input type="text" name="s" class="form-control" placeholder="Keresés a termékek között" aria-label="Keresés a termékek között" aria-describedby="button-search" value="@isset($searchQuery){{ $searchQuery }}@endisset" required>
-                <select name="q" id="q" style="background:white;color:#ba539a;border:1px solid #ba539a;border-radius:0 50px 50px 0;">
+                <select name="q" id="q" style="background:white;color:var(--primary-color);border:1px solid var(--primary-color);border-radius:0 50px 50px 0;">
                     <option value="products">Termékek</option>
                 </select>
             </div>
