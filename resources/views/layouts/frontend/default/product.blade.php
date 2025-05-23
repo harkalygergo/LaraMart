@@ -11,7 +11,7 @@
 
     <div class="row pt-3 pb-3">
         <div class="col">
-            <h1 class="px-4 py-2 corben-bold">
+            <h1 class="corben-bold">
                 {{ $ad['title'] }}
             </h1>
         </div>
@@ -335,4 +335,42 @@
     </div>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 py-4">
     </div-->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ellenőrizzük, hogy létezik-e a carousel elem
+            const carouselElement = document.getElementById('carouselIndicator').getElementsByClassName('carousel-inner')[0];
+
+            if (carouselElement) {
+                const gallery = new Viewer(carouselElement, {
+                    inline: false,
+                    toolbar: {
+                        zoomIn: true,
+                        zoomOut: true,
+                        oneToOne: true,
+                        reset: true,
+                        prev: true,
+                        play: false,
+                        next: true,
+                        rotateLeft: true,
+                        rotateRight: true,
+                        flipHorizontal: true,
+                        flipVertical: true,
+                    },
+                    title: true,
+                    tooltip: true,
+                    movable: true,
+                    zoomable: true,
+                    rotatable: true,
+                    scalable: true,
+                    transition: true,
+                    fullscreen: true,
+                    keyboard: true,
+                });
+            } else {
+                console.warn('Carousel elem nem található!');
+            }
+        });
+    </script>
+
 @endsection
