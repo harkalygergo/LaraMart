@@ -167,7 +167,6 @@
                     <h6>Egyenlegem: {{ $user['points'] }} pont ( 1 pont = 1 forint).</h6>
                     <p>Itt tudod feltölteni az egyenlegedet, hogy hirdetéseket tudj feladni vagy IMEI-t lekérdezni.</p>
                     <p><strong>Jelenleg a hirdetés feladása teljesen ingyenes.</strong></p>
-                    <p>IMEI lekérdezés 100 pontba kerül, azonban regisztrációnál 200 pontot jóváírunk, így az első két lekérdezés díjmentes.</p>
 
                     <h5 class="py-3">Fizetési információk</h5>
                     <p>A kártyás tranzakciókhoz a Bariont vagy Stripe biztonságos fizetést használjuk.</p>
