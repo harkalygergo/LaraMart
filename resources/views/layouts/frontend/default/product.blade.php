@@ -11,10 +11,7 @@
 
     <div class="row pt-3 pb-3">
         <div class="col">
-            <h1 class="corben-regular">
-                {{ $ad['title'] }}
-            </h1>
-            <p class="text-start d-none d-sm-block fs-6 text-muted">
+            <p class="text-start d-none d-sm-block fs-6 text-muted pb-0 mb-0">
                 <a class="text-muted text-decoration-none" href="/">Főoldal</a> &raquo;
                 @if (!empty($ad['category']))
                     @if (!empty($ad['category']['parent']))
@@ -38,6 +35,9 @@
                     @endif
                 @endif
             </p>
+            <h1 class="corben-regular pt-0 mt-0">
+                {{ $ad['title'] }}
+            </h1>
         </div>
     </div>
 
@@ -324,7 +324,9 @@
     </div-->
     <div class="row pt-5">
         <div class="col text-center">
-            <h2 class="sue-ellen-francisco-regular display-3 primary-color">Mások ezt nézik most</h2>
+            <h3 class="display-6">
+                Mások ezt nézik most
+            </h3>
         </div>
     </div>
 
