@@ -11,9 +11,33 @@
 
     <div class="row pt-3 pb-3">
         <div class="col">
-            <h1 class="corben-bold">
+            <h1 class="corben-regular">
                 {{ $ad['title'] }}
             </h1>
+            <p class="text-start d-none d-sm-block fs-6 text-muted">
+                <a class="text-muted text-decoration-none" href="/">Főoldal</a> &raquo;
+                @if (!empty($ad['category']))
+                    @if (!empty($ad['category']['parent']))
+                        @if ($ad['category']['parent']['name'] != $ad['category']['name'])
+                            <a class="text-muted text-decoration-none" href="{{ route('showCategory', $ad['category']['parent']['slug']) }}">
+                                {{ $ad['category']['parent']['name'] }}
+                            </a>
+                            &raquo;
+                            <a class="text-muted text-decoration-none" href="{{ route('showCategory', $ad['category']['slug']) }}">
+                                {{ $ad['category']['name'] }}
+                            </a>
+                        @else
+                            <a class="text-muted text-decoration-none" href="{{ route('showCategory', $ad['category']['slug']) }}">
+                                {{ $ad['category']['name'] }}
+                            </a>
+                        @endif
+                    @else
+                        <a class="text-muted text-decoration-none" href="{{ route('showCategory', $ad['category']['slug']) }}">
+                            {{ $ad['category']['name'] }}
+                        </a>
+                    @endif
+                @endif
+            </p>
         </div>
     </div>
 
@@ -78,23 +102,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <h2 class="text-start d-none d-sm-block">
-                @if (!empty($ad['category']))
-                    @if (!empty($ad['category']['parent']))
-                        @if ($ad['category']['parent']['name'] != $ad['category']['name'])
-                            {{ $ad['category']['parent']['name'] }} &raquo; {{ $ad['category']['name'] }}
-                        @else
-                            {{ $ad['category']['name'] }}
-                        @endif
-                    @else
-                        {{ $ad['category']['name'] }}
-                    @endif
-                @endif
-            </h2>
             <div class="d-flex justify-content-between">
-                <div class="linear-gradient source-sans-pro-black start-0" style="font-size:37px;font-weight: 900;">
-                        {{ number_format($ad['price'], 0, '', ' ') }} Ft
-                </div>
                 <div class="start-0 d-block d-sm-none">
                     @if (Auth::check())
                         @php
@@ -136,7 +144,12 @@
                 </table>
             @endif
 
-            @if (!Auth::check())
+            <div class="corben-bold fs-1 py-2 text-center">
+                <i class="bi bi-tag"></i>
+                {{ number_format($ad['price'], 0, '', ' ') }} Ft
+            </div>
+
+        @if (!Auth::check())
                 <div class="alert alert-primary alert-dismissible d-flex align-items-center fade show" role="alert">
                     <i class="bi bi-info-circle-fill px-1"></i>
                     <div>
@@ -184,7 +197,7 @@
                     <div class="alert alert-primary alert-dismissible d-flex align-items-center fade show" role="alert">
                         <i class="bi bi-info-circle-fill px-1"></i>
                         <div>
-                            Saját hirdetés.
+                            Saját hirdetés. <a href="{{ route('editAd', $ad['id']) }}">Szerkesztés</a>.
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>

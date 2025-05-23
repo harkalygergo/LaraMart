@@ -32,7 +32,7 @@ Route::get('/importAttributes', [\App\Http\Controllers\Frontend\AttributeControl
 
 Route::match(['get', 'post', 'put'], '/hirdetes/feladas', [AdController::class, 'create'])->name('createAd');
 Route::get('/hirdetes/{slug}', [AdController::class, 'showAd']);
-Route::match(['get', 'put'], '/hirdetes/edit/{id}', [AdController::class, 'edit']);
+Route::match(['get', 'put'], '/hirdetes/edit/{id}', [AdController::class, 'edit'])->name('editAd');
 Route::delete('/hirdetes/delete/{id}', [AdController::class, 'delete']);
 Route::get('/hirdetes/{adID}/media/{userID}/delete/{mediaID}', [AdController::class, 'deleteMedia']);
 
@@ -41,7 +41,7 @@ Route::post('/ad/image/reorder', [AdController::class, 'reorderMedia'])->name('a
 
 
 Route::get('/kategoria/import', [CategoryController::class, 'importCategoriesFromXML']);
-Route::get('/kategoria/{slug}', [CategoryController::class, 'showCategory']);
+Route::get('/kategoria/{slug}', [CategoryController::class, 'showCategory'])->name('showCategory');
 
 Route::match(['get', 'post', 'put'], '/profil', [UserController::class, 'profile'])->name('login');
 Route::match(['get', 'post', 'put'], '/addProfilePoint', [UserController::class, 'addProfilePoint'])->name('addProfilePoint');
