@@ -55,6 +55,10 @@
             --primary-color: #9e6740;
         }
 
+        .primary-color {
+            color: var(--primary-color);
+        }
+
         .btn-primary {
             background-color: white;
             border-color: var(--primary-color);
