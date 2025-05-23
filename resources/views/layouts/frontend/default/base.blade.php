@@ -69,6 +69,10 @@
             border-radius: 50px;
         }
 
+        .btn {
+            border-radius: 50px;
+        }
+
         .btn-primary {
             background-color: white;
             border-color: var(--primary-color);
