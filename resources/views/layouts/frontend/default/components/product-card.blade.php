@@ -13,7 +13,7 @@
 @endif
 
 <div class="col p-0">
-    <div class="card m-0 p-0 p-md-2 shadow mx-1 mx-md-3 h-100">
+    <div class="card m-0 p-0 p-md-2 shadow mx-1 h-100">
         <div id="carouselIndicator{{ $ad['id'] }}" class="carousel slide">
             <div class="carousel-inner">
                 @foreach ($images as $image)
