@@ -1,5 +1,5 @@
 <footer class="container-fluid">
-    <div class="container py-5">
+    <div class="container">
         <div class="row">
             <div class="col pt-5">
                 <h4 class="sue-ellen-francisco-regular text-uppercase display-6">Menü</h4>
@@ -32,18 +32,21 @@
             </div>
         </div>
     </div>
-    <div class="container p-5">
-        <div class="row">
+    <div class="container">
+        <div class="row py-4">
             <div class="col text-center">
                 <a target="_blank" href="https://www.buymeacoffee.com/harkalygergo">
                     <img alt="BuyMeACoffee/harkalygergo" src="https://img.buymeacoffee.com/button-api/?text=Köszönöm, ha meghívsz!&emoji=☕&slug=harkalygergo&button_colour=ffffff&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=FFDD00" />
                 </a>
             </div>
-    </div>
-    <div class="container pt-5">
+        </div>
         <div class="row">
             <div class="col text-center text-white-50">
-                .: Copyright 2024 &copy; {{ env('APP_NAME') }} :: Minden jog fenntartva! :.
+                <p>
+                    <small>
+                        .: Copyright 2024 &copy; {{ env('APP_NAME') }} :: Minden jog fenntartva! :.
+                    </small>
+                </p>
             </div>
         </div>
     </div>
