@@ -201,7 +201,9 @@
                     <div class="alert alert-primary alert-dismissible d-flex align-items-center fade show" role="alert">
                         <i class="bi bi-info-circle-fill px-1"></i>
                         <div>
-                            Saját hirdetés. <a href="{{ route('editAd', $ad['id']) }}">Szerkesztés</a>.
+                            Saját hirdetés.
+                             | <a href="{{ route('editAd', $ad['id']) }}">Szerkesztés</a>
+                             |  <a href="/tamogatas">Támogatás</a>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
