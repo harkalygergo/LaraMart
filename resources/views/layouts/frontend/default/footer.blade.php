@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col pt-5">
-                <h4 class="fs-4 text-white fw-bold">Menü</h4>
+                <h4 class="fs-4 text-white fw-bold">Kategóriák</h4>
                 <ul class="list-group list-group-flush">
                     @foreach(\App\Models\Category::whereNull('parent_id')->get() as $category)
                         <li class="list-group item">
@@ -25,7 +25,7 @@
                     @endforeach
                     <li class="list-group item">
                         <a class="text-decoration-none text-white" href="{{ route('info.index') }}">
-                            Info
+                            Információk
                         </a>
                     </li>
                 </ul>
@@ -44,7 +44,7 @@
             <div class="col text-center text-white-50">
                 <p>
                     <small>
-                        .: Copyright 2024 &copy; {{ env('APP_NAME') }} :: Minden jog fenntartva! :.
+                        .: Copyright 2025 &copy; {{ env('APP_NAME') }} :: Minden jog fenntartva! :.
                     </small>
                 </p>
             </div>
