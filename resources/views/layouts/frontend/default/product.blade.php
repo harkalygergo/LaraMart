@@ -44,18 +44,6 @@
     <div class="row">
         <div class="col-md-6">
             <div id="carouselIndicator" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    @if (!empty($ad['merchant_id']))
-                        @foreach (json_decode($ad['images'], true) as $image)
-                            <button type="button" data-bs-target="#carouselIndicator" data-bs-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}" aria-current="{{ $loop->first ? 'true' : 'false' }}" aria-label="Slide {{ $loop->index }}"></button>
-                        @endforeach
-                    @endif
-                    @if (!empty($ad['user_id']))
-                        @foreach ($ad->getMedia($ad['id']) as $media)
-                            <button type="button" data-bs-target="#carouselIndicator" data-bs-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}" aria-current="{{ $loop->first ? 'true' : 'false' }}" aria-label="Slide {{ $loop->index }}"></button>
-                        @endforeach
-                    @endif
-                </div>
                 <div class="carousel-inner">
                     @if (!empty($ad['merchant_id']))
                         @foreach (json_decode($ad['images'], true) as $image)
@@ -74,17 +62,17 @@
                 </div>
                 <!-- Preview images below the carousel -->
                 <div class="carousel-previews mt-3">
-                    <div class="row justify-content-center">
+                    <div class="row flex-nowrap overflow-auto text-center">
                         @if (!empty($ad['merchant_id']))
                             @foreach (json_decode($ad['images'], true) as $image)
-                                <div class="col-2">
+                                <div class="col-2 p-1">
                                     <img src="{{ $image }}" class="img-thumbnail" data-bs-target="#carouselIndicator" data-bs-slide-to="{{ $loop->index }}" alt="" loading="lazy">
                                 </div>
                             @endforeach
                         @endif
                         @if (!empty($ad['user_id']))
                             @foreach ($ad->getMedia($ad['id']) as $media)
-                                <div class="col-2">
+                                <div class="col-2 p-1">
                                     <img src="{{ $media->getUrl() }}" class="img-thumbnail" data-bs-target="#carouselIndicator" data-bs-slide-to="{{ $loop->index }}" alt="" loading="lazy">
                                 </div>
                             @endforeach
@@ -131,6 +119,22 @@
             <!-- if attributes not empty -->
             @if (!empty($ad['attributes']))
                 <table class="table">
+                    <tr>
+                        <td><i class="bi bi-upc"></i></td>
+                        <td>Referenciaszám</td>
+                        <td>
+                            <strong>
+                                @if (!empty($info))
+                                    <a target="_blank" class=" text-black" href="/info/{{ $info['slug'] }}" title="{{ $info['title'] }}">
+                                        {{ $ad['reference_number'] }}
+                                    </a>
+                                @else
+                                    {{ $ad['reference_number'] }}
+                                @endif
+                            </strong>
+                        </td>
+                    </tr>
+
                     @foreach (json_decode($ad['attributes'], true) as $attributeKey => $attributeValue)
                         @if (empty($attributeValue))
                             @continue

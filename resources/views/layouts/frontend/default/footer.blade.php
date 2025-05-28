@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col pt-5">
-                <h4 class="sue-ellen-francisco-regular text-uppercase display-6">Menü</h4>
+                <h4 class="fs-4 text-white fw-bold">Menü</h4>
                 <ul class="list-group list-group-flush">
                     @foreach(\App\Models\Category::whereNull('parent_id')->get() as $category)
                         <li class="list-group item">
@@ -14,7 +14,7 @@
                 </ul>
             </div>
             <div class="col pt-5">
-                <h4 class="sue-ellen-francisco-regular text-uppercase display-6">Hasznos</h4>
+                <h4 class="fs-4 text-white fw-bold">Hasznos</h4>
                 <ul class="list-group list-group-flush">
                     @foreach(\App\Models\Page::all() as $page)
                         <li class="list-group item">

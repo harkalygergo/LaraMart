@@ -78,6 +78,7 @@ class AdController extends Controller
             return null;
         }
 
+        $ad->reference_number = $product['reference_number'];
         // set the title to the product subject
         $ad->title = $product['subject'];
         // set the description to the product description
@@ -174,6 +175,17 @@ class AdController extends Controller
             abort(404);
         }
 
+        $info = null;
+        $brand = json_decode($ad->attributes, true)['brand'];
+        $referenceNumber = $ad->reference_number;
+
+        if ($brand!=='' && $referenceNumber!=='') {
+            // find Info where title like brand and reference_number
+            $info = \App\Models\Info::where('title', 'like', "%$brand%")
+                ->where('title', 'like', "%$referenceNumber%")
+                ->first();
+        }
+
         // get 6 ads based on last_view column
         $relatedAds = Ad::where('id', '!=', $ad->id)->orderBy('last_view', 'desc')->limit(8)->get();
 
@@ -186,6 +198,7 @@ class AdController extends Controller
 
         return view(env('LAYOUT').'.product', [
             'ad' => $ad,
+            'info' => $info,
             'settings' => (new SettingsController())->getSettings(),
             'allAttributes' => (new AttributeController())->getAttributes(),
             'relatedAds' => $relatedAds,

@@ -46,6 +46,10 @@
                 @csrf
                 @method('PUT')
                 <div class="form-group mb-3">
+                    <label for="reference_number">Referenciaszám:</label>
+                    <input type="text" class="form-control" id="reference_number" name="reference_number" required placeholder="például: 1.2.3.4" value="@isset($ad){{$ad['reference_number']}}@endisset">
+                </div>
+                <div class="form-group mb-3">
                     <label for="subject">Hirdetés címe:</label>
                     <input type="text" class="form-control" id="subject" name="subject" required placeholder="például: Eladó iPhone 16 PRO max kifogástalan állapotban" value="@isset($ad){{$ad['title']}}@endisset">
                 </div>
@@ -67,7 +71,7 @@
                     <select class="form-control" id="category_id" name="category_id" required>
                         <option value="">- válassz kategóriát -</option>
                         @foreach ($categories as $categoryID => $category)
-                            <option value="{{ $categoryID }}" @isset($ad) @if($ad['$category']==$categoryID) selected @endif @endisset  >
+                            <option value="{{ $categoryID }}" @isset($ad) @if($ad['category_id']==$categoryID) selected @endif @endisset  >
                                 {{ $category }}
                             </option>
                         @endforeach
