@@ -50,6 +50,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Corben:wght@400;700&display=swap" rel="stylesheet">
+
+    <meta property="og:image" content="https://harkalygergo.github.io/oraplacchu.png" />
+
     <style>
         :root {
             --primary-color: #9e6740;

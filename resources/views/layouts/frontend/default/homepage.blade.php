@@ -13,7 +13,7 @@
                         @if ($banner->href)
                             <a href="{{ $banner->href }}" target="{{ $banner->hrefTarget }}">
                         @endif
-                                <img src="{{ $banner->mediaURL }}" class="d-block w-100" alt="banner">
+                                <img loading="lazy" src="{{ $banner->mediaURL }}" class="d-block w-100" alt="banner">
                         @if ($banner->href)
                             </a>
                         @endif
