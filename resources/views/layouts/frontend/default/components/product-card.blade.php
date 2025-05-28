@@ -13,7 +13,7 @@
 @endif
 
 <div class="col p-0">
-    <div class="card m-0 p-0 p-md-2 shadow mx-2 h-100">
+    <div class="card m-0 p-0 mx-2 shadow h-100">
         <div id="carouselIndicator{{ $ad['id'] }}" class="carousel slide">
             <div class="carousel-inner">
                 @foreach ($images as $image)
@@ -71,22 +71,23 @@
             </p>
         </div>
         <div class="card-footer text-center bg-transparent d-grid">
-            <a href="/hirdetes/{{ $ad['url'] }}" class="btn btn-primary btn-fluid text-capitalize">
-                <i class="bi bi-eye"></i> megnézem
+            <a href="/hirdetes/{{ $ad['url'] }}" class="btn btn-primary btn-fluid">
+                <i class="bi bi-eye"></i>
+                eladó óra adatlapja
             </a>
             @if (isset($edit))
-                <a href="/hirdetes/edit/{{ $ad['id'] }}" class="btn btn-warning btn-fluid text-capitalize px-5 py-2 my-2">
+                <a href="/hirdetes/edit/{{ $ad['id'] }}" class="btn btn-warning btn-fluid px-5 py-2 my-2">
                     <i class="bi bi-pen"></i>
-                    Szerkesztés
+                    szerkesztés
                 </a>
             @endif
             @if (isset($delete))
                 <form action="/hirdetes/delete/{{ $ad['id'] }}" method="POST" class="d-grid">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-fluid text-capitalize px-5 py-2 my-1">
+                    <button type="submit" class="btn btn-danger btn-fluid px-5 py-2 my-1">
                         <i class="bi bi-trash"></i>
-                        Törlés
+                        törlés
                     </button>
                 </form>
             @endif
