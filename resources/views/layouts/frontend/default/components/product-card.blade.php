@@ -13,7 +13,7 @@
 @endif
 
 <div class="col p-0">
-    <div class="card m-0 p-0 mx-2 shadow h-100">
+    <div class="card m-0 p-0 mx-1 shadow h-100">
         <div id="carouselIndicator{{ $ad['id'] }}" class="carousel slide">
             <div class="carousel-inner">
                 @foreach ($images as $image)
@@ -73,7 +73,7 @@
         <div class="card-footer text-center bg-transparent d-grid">
             <a href="/hirdetes/{{ $ad['url'] }}" class="btn btn-primary btn-fluid">
                 <i class="bi bi-eye"></i>
-                eladó óra adatlapja
+                megnézem
             </a>
             @if (isset($edit))
                 <a href="/hirdetes/edit/{{ $ad['id'] }}" class="btn btn-warning btn-fluid px-5 py-2 my-2">
