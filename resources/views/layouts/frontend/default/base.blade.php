@@ -52,6 +52,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Corben:wght@400;700&display=swap" rel="stylesheet">
 
     <meta property="og:image" content="https://harkalygergo.github.io/oraplacchu.png" />
+    <meta property="og:title" content="{{ $settings['site_title'] }} | {{ $settings['site_description'] }}" />
 
     <style>
         :root {
