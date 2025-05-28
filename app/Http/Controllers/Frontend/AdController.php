@@ -227,10 +227,6 @@ class AdController extends Controller
     {
         $query = request('s');
 
-        if (request('q') == 'imei') {
-            return redirect('/telefon-adat-lekerdezes?imei='.$query);
-        }
-
         $results = Ad::where('title', 'like', "%$query%")
             ->orWhere('description', 'like', "%$query%")
             ->orWhere('attributes', 'like', "%$query%")

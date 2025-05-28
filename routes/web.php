@@ -7,7 +7,6 @@ use App\Http\Controllers\Frontend\BarionController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\HomepageController;
-use App\Http\Controllers\Frontend\IMEIController;
 use App\Http\Controllers\Frontend\InfoController;
 use App\Http\Controllers\Frontend\MessageController;
 use App\Http\Controllers\Frontend\PageController;
@@ -48,8 +47,6 @@ Route::match(['get', 'post', 'put'], '/addProfilePoint', [UserController::class,
 
 Route::match(['get', 'post'], '/regisztracio', [UserController::class, 'registerForm'])->name('register');
 Route::match(['get', 'post'], '/password-reset', [UserController::class, 'passwordReset'])->name('passwordReset');
-
-Route::get('/telefon-adat-lekerdezes', [IMEIController::class, 'index'])->name('telefon-adat-lekerdezes');
 
 /* API */
 Route::get('/api/cron', [AdController::class, 'getAdsFromJson'])->name('hourlyCron');

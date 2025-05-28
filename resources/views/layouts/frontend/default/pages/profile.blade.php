@@ -165,7 +165,7 @@
                 <div class="tab-pane" id="deposit" role="tabpanel" aria-labelledby="deposit-tab" tabindex="2">
                     <h4 class="pt-3 text-center">Egyenleg</h4>
                     <h6>Egyenlegem: {{ $user['points'] }} pont ( 1 pont = 1 forint).</h6>
-                    <p>Itt tudod feltölteni az egyenlegedet, hogy hirdetéseket tudj feladni vagy IMEI-t lekérdezni.</p>
+                    <p>Itt tudod feltölteni az egyenlegedet, hogy hirdetéseket tudj feladni.</p>
                     <p><strong>Jelenleg a hirdetés feladása teljesen ingyenes.</strong></p>
 
                     <h5 class="py-3">Fizetési információk</h5>

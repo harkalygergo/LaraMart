@@ -1,18 +1,14 @@
 {
-    "name": "laravel/laravel",
+    "name": "harkalygergo/laramart",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
-    "license": "MIT",
+    "description": " LaraMart is a Laravel-based marketplace web application. ",
+    "keywords": ["laravel", "framework", "marketplace", "e-commerce", "web application"],
     "require": {
         "php": "^8.3",
         "ext-curl": "*",
-        "ext-simplexml": "*",
-        "barion/barion-web-php": "^2.0",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
-        "spatie/laravel-medialibrary": "^11.10",
-        "zoparga/laravel-szamlazzhu": "^1.7"
+        "spatie/laravel-medialibrary": "^11.10"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

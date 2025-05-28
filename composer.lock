@@ -4,46 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "37afbf6f954b48e755187917b82b6ba9",
+    "content-hash": "5dc315f0232db83da0af10c077c55741",
     "packages": [
-        {
-            "name": "barion/barion-web-php",
-            "version": "v2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/barion/barion-web-php.git",
-                "reference": "2853a8792c84f824549898f6584ed6462a112676"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/barion/barion-web-php/zipball/2853a8792c84f824549898f6584ed6462a112676",
-                "reference": "2853a8792c84f824549898f6584ed6462a112676",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "php": ">=8.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Barion\\": "library/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "PHP libary for Barion Smart Gateway API integration",
-            "support": {
-                "chat": "https://discord.gg/rPkeS5fW",
-                "docs": "https://docs.barion.com",
-                "email": "devsupport@barion.com",
-                "issues": "https://github.com/barion/barion-web-php/issues",
-                "source": "https://github.com/barion/barion-web-php/tree/v2.0.1"
-            },
-            "time": "2025-03-25T09:18:59+00:00"
-        },
         {
             "name": "brick/math",
             "version": "0.12.3",
@@ -6341,82 +6303,6 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
-        },
-        {
-            "name": "zoparga/laravel-szamlazzhu",
-            "version": "1.7.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zoparga/laravel-szamlazzhu.git",
-                "reference": "be55195ccd841011d429732ddb147a6268e946e1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zoparga/laravel-szamlazzhu/zipball/be55195ccd841011d429732ddb147a6268e946e1",
-                "reference": "be55195ccd841011d429732ddb147a6268e946e1",
-                "shasum": ""
-            },
-            "require": {
-                "ext-simplexml": "*",
-                "ext-xmlwriter": "*",
-                "guzzlehttp/guzzle": "6.* | 7.*",
-                "laravel/framework": " 6.* | 7.* | 8.* | 9.* | 10.* | 11.* | 12.*",
-                "php": "^7.1.3|^8.0 |^8.1 |^8.2"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.4",
-                "orchestra/testbench": "*",
-                "phpunit/phpunit": "*"
-            },
-            "suggest": {
-                "illuminate/validation": "5.7.*"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "aliases": [],
-                    "providers": [
-                        "zoparga\\SzamlazzHu\\Providers\\SzamlazzHuServiceProvider"
-                    ]
-                },
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "files": [],
-                "psr-4": {
-                    "zoparga\\SzamlazzHu\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Forgács Bence",
-                    "email": "sykorax93@gmail.com"
-                },
-                {
-                    "name": "Papp Zoltán",
-                    "email": "zoltan@pappz.hu"
-                }
-            ],
-            "description": "Szamlazz.hu integration for Laravel",
-            "keywords": [
-                "currency",
-                "invoice",
-                "laravel",
-                "receipt",
-                "szamlazz.hu",
-                "szamlazzhu"
-            ],
-            "support": {
-                "issues": "https://github.com/zoparga/laravel-szamlazzhu/issues",
-                "source": "https://github.com/zoparga/laravel-szamlazzhu/tree/1.7.5"
-            },
-            "time": "2025-04-25T07:34:19+00:00"
         }
     ],
     "packages-dev": [
@@ -8724,8 +8610,7 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^8.3",
-        "ext-curl": "*",
-        "ext-simplexml": "*"
+        "ext-curl": "*"
     },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"
