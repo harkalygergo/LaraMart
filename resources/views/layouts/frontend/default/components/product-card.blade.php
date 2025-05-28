@@ -8,7 +8,7 @@
 @if (!empty($ad['user_id']))
     @php
         //$image = $ad->getMedia($ad['id'])->first()->getUrl();
-        $images = $ad->getMedia($ad['id'])->map(fn($media) => $media->getUrl(''));
+        $images = $ad->getMedia($ad['id'])->map(fn($media) => $media->getUrl('medium'));
     @endphp
 @endif
 

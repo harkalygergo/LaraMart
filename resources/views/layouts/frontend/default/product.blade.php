@@ -73,7 +73,7 @@
                         @if (!empty($ad['user_id']))
                             @foreach ($ad->getMedia($ad['id']) as $media)
                                 <div class="col-2 p-1">
-                                    <img src="{{ $media->getUrl() }}" class="img-thumbnail" data-bs-target="#carouselIndicator" data-bs-slide-to="{{ $loop->index }}" alt="" loading="lazy">
+                                    <img src="{{ $media->getUrl('small') }}" class="img-thumbnail" data-bs-target="#carouselIndicator" data-bs-slide-to="{{ $loop->index }}" alt="" loading="lazy">
                                 </div>
                             @endforeach
                         @endif

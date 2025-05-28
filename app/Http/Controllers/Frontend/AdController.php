@@ -170,7 +170,7 @@ class AdController extends Controller
     {
         $ad = Ad::where('url', $slug)->first();
 
-        // if ad is not found, return 404
+        // if the ad is not found, return 404
         if (!$ad) {
             abort(404);
         }
@@ -307,35 +307,5 @@ class AdController extends Controller
             'categories' => CategoryController::getCategoriesAsSelectOptions(),
             'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
         ]);
-    }
-
-    // handle the form submission
-    public function store()
-    {
-        // validate the request data
-        request()->validate([
-            'title' => 'required|string',
-            'description' => 'required|string',
-            'price' => 'required|numeric',
-            'image' => 'required|image',
-        ]);
-
-        // create a new Ad object
-        $ad = new Ad();
-        // set the title to the request title
-        $ad->title = request('title');
-        // set the description to the request description
-        $ad->description = request('description');
-        // set the price to the request price
-        $ad->price = request('price');
-        // set the user_id to the authenticated user id
-        $ad->user_id = auth()->id();
-        // save the ad
-        $ad->save();
-
-        // upload the image
-        $ad->addMedia(request('image'))->toMediaCollection('images', 'public');
-
-        return redirect()->route('login');
     }
 }
