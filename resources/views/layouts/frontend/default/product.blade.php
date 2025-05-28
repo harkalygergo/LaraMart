@@ -118,34 +118,38 @@
 
             <!-- if attributes not empty -->
             @if (!empty($ad['attributes']))
-                <table class="table">
-                    <tr>
-                        <td><i class="bi bi-upc"></i></td>
-                        <td>Referenciaszám</td>
-                        <td>
-                            <strong>
-                                @if (!empty($info))
-                                    <a target="_blank" class=" text-black" href="/info/{{ $info['slug'] }}" title="{{ $info['title'] }}">
-                                        {{ $ad['reference_number'] }}
-                                    </a>
-                                @else
-                                    {{ $ad['reference_number'] }}
-                                @endif
-                            </strong>
-                        </td>
-                    </tr>
+                <div class="card card shadow p-2 m-0">
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <tr>
+                                <td><i class="bi bi-upc"></i></td>
+                                <td>Referenciaszám</td>
+                                <td>
+                                    <strong>
+                                        @if (!empty($info))
+                                            <a target="_blank" class=" text-black" href="/info/{{ $info['slug'] }}" title="{{ $info['title'] }}">
+                                                {{ $ad['reference_number'] }}
+                                            </a>
+                                        @else
+                                            {{ $ad['reference_number'] }}
+                                        @endif
+                                    </strong>
+                                </td>
+                            </tr>
 
-                    @foreach (json_decode($ad['attributes'], true) as $attributeKey => $attributeValue)
-                        @if (empty($attributeValue))
-                            @continue
-                        @endif
-                        <tr>
-                            <td><i class="{{ $allAttributes[$attributeKey]['icon'] }}"></i></td>
-                            <td>{{ $allAttributes[$attributeKey]['title'] }}</td>
-                            <td><strong>{{ $attributeValue }}</strong></td>
-                        </tr>
-                    @endforeach
-                </table>
+                            @foreach (json_decode($ad['attributes'], true) as $attributeKey => $attributeValue)
+                                @if (empty($attributeValue))
+                                    @continue
+                                @endif
+                                <tr>
+                                    <td><i class="{{ $allAttributes[$attributeKey]['icon'] }}"></i></td>
+                                    <td>{{ $allAttributes[$attributeKey]['title'] }}</td>
+                                    <td><strong>{{ $attributeValue }}</strong></td>
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
+                </div>
             @endif
 
             <div class="corben-bold fs-1 py-2 text-center">
