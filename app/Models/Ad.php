@@ -18,11 +18,11 @@ class Ad extends Model implements HasMedia
     private float $price;
     private int $user_id;
     private int $merchant_id;
-    private string $categoryType1;
-    private string $categoryType2;
-    private string $categoryType3;
     private string $external_link;
     private string $last_view;
+
+    // add a seen count number, default to 0
+    private int $seen_count = 0;
 
     private int $category_id;
 

@@ -191,6 +191,11 @@ class AdController extends Controller
 
         // update ad last_view column
         $ad->last_view = now();
+
+        // if ad user_id is the same as the authenticated user, set the last_view to now
+        if (!auth()->check() || auth()->user()->id !== $ad->user_id) {
+            $ad->seen_count++;
+        }
         $ad->save();
 
         // call the importAttributes function from the AttributeController

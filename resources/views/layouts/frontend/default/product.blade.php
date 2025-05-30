@@ -206,8 +206,9 @@
                         <i class="bi bi-info-circle-fill px-1"></i>
                         <div>
                             Saját hirdetés.
-                             | <a href="{{ route('editAd', $ad['id']) }}">Szerkesztés</a>
-                             |  <a href="/tamogatas">Támogatás</a>
+                             | <i class="bi bi-eye"></i> {{ $ad['seen_count'] }}
+                             | <a href="{{ route('editAd', $ad['id']) }}"><i class="bi bi-pencil"></i>  Szerkesztés</a>
+                             | <a href="/tamogatas"><i class="bi bi-cash"></i> Támogatás</a>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>

@@ -150,34 +150,6 @@ class CategoryController extends Controller
             }
         }
 
-
-
-        /*
-        foreach($subcategories as $subcategory) {
-            $ads = Ad::where('categoryType2', $subcategory->name)->get();
-            if (!$ads->isEmpty()) {
-                $subcategory->ads = $ads;
-            }
-            echo $subcategory->name.'<br>';
-        }
-        */
-
-        //$ads = Ad::where('categoryType1', $slug)->get();
-
-        // get ads of the category where categoryType1 is $slug or categoryType2 is $slug or categoryType3 is $slug
-        /*
-        $ads = Ad::where('categoryType1', $category->name)
-            ->orWhere('categoryType2', $category->name)
-            ->orWhere('categoryType3', $category->name)
-            ->get();
-        */
-        /*
-        $title = $slug;
-        // if ads is empty, return 404
-        if (!$ads->isEmpty()) {
-            $title = $ads->first()->categoryType1;
-        }
-        */
         $title = $category->title;
 
         $availableAttributes = [];

@@ -65,7 +65,6 @@
                     <label for="images">Képek:</label>
                     <input type="file" class="form-control" id="images" name="images[]" multiple @if(!isset($ad)) required @endif>
                 </div>
-                <!-- loop throe $categoryType1 as select options -->
                 <div class="form-group mb-3">
                     <label for="category_id">Kategória:</label>
                     <select class="form-control" id="category_id" name="category_id" required>
