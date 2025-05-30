@@ -332,23 +332,23 @@
             </section>
         </div>
     </div-->
-    <div class="row pt-5">
-        <div class="col text-center">
-            <h3 class="display-6">
-                Mások ezt nézik most
-            </h3>
+
+    @if (!empty($relatedAds->toArray()) && count($relatedAds) > 0)
+        <div class="row pt-5">
+            <div class="col text-center">
+                <h3 class="display-6">
+                    Mások ezt nézik most
+                </h3>
+            </div>
         </div>
-    </div>
-
-    <div class="row row-cols-2 row-cols-sm-2 row-cols-lg-4 g-4 py-4">
-
-        <!-- loop through related products -->
-        @foreach ($relatedAds as $relatedAd)
-            @include(env('LAYOUT').'.components.product-card', [
-                'ad' => $relatedAd
-            ])
-        @endforeach
-    </div>
+        <div class="row row-cols-2 row-cols-sm-2 row-cols-lg-4 g-4 py-4">
+            @foreach ($relatedAds as $relatedAd)
+                @include(env('LAYOUT').'.components.product-card', [
+                    'ad' => $relatedAd
+                ])
+            @endforeach
+        </div>
+    @endif
 
     <!-- include components/message-modal.blade.php -->
     @include(env('LAYOUT').'.components.message-modal')
