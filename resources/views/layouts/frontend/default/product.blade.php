@@ -48,14 +48,14 @@
                     @if (!empty($ad['merchant_id']))
                         @foreach (json_decode($ad['images'], true) as $image)
                             <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                                <img src="{{ $image }}" class="d-block w-100 rounded-5" alt="" loading="lazy">
+                                <img src="{{ $image }}" data-viewerjs="{{ $image }}" class="d-block w-100 rounded-5" alt="" loading="lazy">
                             </div>
                         @endforeach
                     @endif
                     @if (!empty($ad['user_id']))
                         @foreach ($ad->getMedia($ad['id']) as $media)
                             <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                                <img src="{{ $media->getUrl() }}" class="d-block w-100 rounded-5" alt="" loading="lazy">
+                                <img src="{{ $media->getUrl('large') }}" data-viewerjs="{{ $media->getUrl() }}" class="d-block w-100 rounded-5" alt="" loading="lazy">
                             </div>
                         @endforeach
                     @endif
@@ -203,14 +203,13 @@
                     || request()->cookie('logged_in_account_type')=='merchant' && $user->id == $ad['merchant_id']
                     )
                     <div class="alert alert-primary alert-dismissible d-flex align-items-center fade show" role="alert">
-                        <i class="bi bi-info-circle-fill px-1"></i>
-                        <div>
-                            Saját hirdetés.
+                        <p>
+                            <i class="bi bi-info-circle-fill"></i> Saját hirdetés.
                              | <i class="bi bi-eye"></i> {{ $ad['seen_count'] }}
-                             | <a href="{{ route('editAd', $ad['id']) }}"><i class="bi bi-pencil"></i>  Szerkesztés</a>
+                             | <a href="{{ route('editAd', $ad['id']) }}"><i class="bi bi-pencil"></i> Szerkesztés</a>
                              | <a href="/tamogatas"><i class="bi bi-cash"></i> Támogatás</a>
-                        </div>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </p>
                     </div>
                 @else
                     <div class="row my-2">
@@ -368,7 +367,10 @@
             const carouselElement = document.getElementById('carouselIndicator').getElementsByClassName('carousel-inner')[0];
 
             if (carouselElement) {
-                const gallery = new Viewer(carouselElement, {
+                new Viewer(carouselElement, {
+                    url(carouselElement) {
+                        return carouselElement.dataset.viewerjs;
+                    },
                     inline: false,
                     toolbar: {
                         zoomIn: true,
@@ -376,7 +378,7 @@
                         oneToOne: true,
                         reset: true,
                         prev: true,
-                        play: false,
+                        play: true,
                         next: true,
                         rotateLeft: true,
                         rotateRight: true,
