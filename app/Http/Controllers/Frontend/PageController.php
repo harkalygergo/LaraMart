@@ -36,6 +36,10 @@ class PageController extends Controller
     {
         $page = Page::where('slug', $slug)->first();
 
+        if (!$page) {
+            abort(404, 'Page not found');
+        }
+
         // if $page title contains "API" string, return 404
         if (strpos($page->title, 'API') !== false) {
             return view(env('LAYOUT').'.page-api', [

@@ -262,7 +262,7 @@
         <div class="col-md-7">
             <div class="card shadow p-3 m-1">
                 <div class="card-body">
-                    <h3>Leírás</h3>
+                    <h3 class="corben-regular">Leírás</h3>
                     <p>
                         {!! nl2br(e($ad['description'])) !!}
                     </p>
@@ -272,7 +272,7 @@
         <div class="col-md-5">
             <div class="card shadow p-3 m-1">
                 <div class="card-body">
-                    <h3>Vedd fel a kapcsolatot</h3>
+                    <h3 class="corben-regular">Hirdető</h3>
                     @if ($ad['user_id'])
                         <p>
                             <strong>{{ $ad['user']['name'] }} </strong>
