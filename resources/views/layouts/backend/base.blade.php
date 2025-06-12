@@ -129,6 +129,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('indexInfo') }}">
+                                <i class="bi bi-info-circle"></i>
+                                Információs oldalak
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-white" href="/admin/v1/pages/">
                                 <i class="bi bi-layout-sidebar"></i>
                                 Oldalak

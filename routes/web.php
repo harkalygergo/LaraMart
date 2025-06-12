@@ -71,6 +71,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('user/delete/{id}', [BackendController::class, 'deleteUser']);
             Route::get('merchant/delete/{id}', [BackendController::class, 'deleteMerchant']);
             Route::match(['get', 'post', 'put', 'delete'], 'user/edit/{id}', [BackendController::class, 'editUser'])->name('editUser');
+            Route::match(['get', 'post', 'put', 'delete'], 'info', [InfoController::class, 'index2'])->name('indexInfo');
+            Route::match(['get', 'post', 'put', 'delete'], 'info/add', [InfoController::class, 'create'])->name('addInfo');
+            Route::match(['get', 'post', 'put', 'delete'], 'info/edit/{id}', [InfoController::class, 'edit'])->name('editInfo');
             Route::match(['get', 'post', 'put', 'delete'], 'merchant/edit/{id}', [BackendController::class, 'editMerchant'])->name("editMerchant");
             Route::match(['get', 'post'], 'merchant/create', [BackendController::class, 'createMerchant']);
             Route::get('merchant/delete/{id}', [BackendController::class, 'deleteMerchant']);
