@@ -51,8 +51,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Corben:wght@400;700&display=swap" rel="stylesheet">
 
-    <meta property="og:image" content="https://harkalygergo.github.io/oraplacchu.png" />
-    <meta property="og:title" content="{{ $settings['site_title'] }} | {{ $settings['site_description'] }}" />
+    <meta property="og:title" content="@yield('title'){{ $settings['site_title'] }}" />
+    @if (isset($ad) && $ad->media->count() > 0)
+        <meta property="og:image" content="{{ $ad->getMedia($ad['id'])->first()->getUrl() }}" />
+    @else
+        <meta property="og:image" content="https://harkalygergo.github.io/oraplacchu.png" />
+    @endif
 
     <style>
         :root {
@@ -130,15 +134,17 @@
         </div>
     @endif
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @isset($errors)
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    @endisset
 
     <main>
 
