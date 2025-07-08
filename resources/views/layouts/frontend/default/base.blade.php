@@ -53,7 +53,7 @@
 
     <meta property="og:title" content="@yield('title'){{ $settings['site_title'] }}" />
     @if (isset($ad) && $ad->media->count() > 0)
-        <meta property="og:image" content="{{ $ad->getMedia($ad['id'])->first()->getUrl() }}" />
+        <meta property="og:image" content="{{ $ad->getMedia($ad['id'])->first()->getUrl('large') }}" />
     @else
         <meta property="og:image" content="https://harkalygergo.github.io/oraplacchu.png" />
     @endif
