@@ -44,6 +44,9 @@ jobs:
                         chown -R ${{ vars.USER }}:www-data ./*
                         chown -R ${{ vars.USER }}:www-data ./.[^.]*
 
+                        printf "\n\n *** change user *** \n\n"
+                        su harkalygergo
+
                         printf "\n\n *** composer update *** \n\n"
                         composer update
 
@@ -53,10 +56,5 @@ jobs:
                         printf "\n\n *** composer dump-autoload *** \n\n"
                         composer dump-autoload -o
 
-                        printf "\n\n *** clear cache *** \n\n"
-                        chown -R ${{ vars.USER }}:www-data ./*
-                        chown -R ${{ vars.USER }}:www-data ./.[^.]*
-
-                        printf "\n\n *** migration *** \n\n"
                         printf "\n\n *** git status *** \n\n"
                         git status
