@@ -51,6 +51,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Corben:wght@400;700&display=swap" rel="stylesheet">
 
+    <meta property="fb:app_id" content="1454931065532523" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="hu_HU" />
     <meta property="og:url" content="{{ url()->current() }}" />
