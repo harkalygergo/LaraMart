@@ -51,12 +51,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Corben:wght@400;700&display=swap" rel="stylesheet">
 
-    <meta property="og:title" content="@yield('title'){{ $settings['site_title'] }}" />
-    @if (isset($ad) && $ad->media->count() > 0)
-        <meta property="og:image" content="{{ $ad->getMedia($ad['id'])->first()->getUrl('large') }}" />
-    @else
-        <meta property="og:image" content="https://harkalygergo.github.io/oraplacchu.png" />
-    @endif
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="hu_HU" />
     <meta property="og:url" content="{{ url()->current() }}" />
