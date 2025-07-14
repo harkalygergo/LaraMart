@@ -333,6 +333,23 @@
         </div>
     </div-->
 
+    @if (!empty($ownerMoreAds->toArray()) && count($ownerMoreAds) > 0)
+        <div class="row pt-5">
+            <div class="col text-center">
+                <h3 class="display-6">
+                    A hirdető további termékei
+                </h3>
+            </div>
+        </div>
+        <div class="row row-cols-2 row-cols-sm-2 row-cols-lg-4 g-4 py-4">
+            @foreach ($ownerMoreAds as $ownerMoreAd)
+                @include(env('LAYOUT').'.components.product-card', [
+                    'ad' => $ownerMoreAd
+                ])
+            @endforeach
+        </div>
+    @endif
+
     @if (!empty($relatedAds->toArray()) && count($relatedAds) > 0)
         <div class="row pt-5">
             <div class="col text-center">

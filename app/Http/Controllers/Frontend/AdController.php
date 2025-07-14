@@ -201,6 +201,12 @@ class AdController extends Controller
         // call the importAttributes function from the AttributeController
         (new AttributeController())->importAttributes($ad);
 
+        $ownerMoreAds = Ad::where('user_id', $ad->user_id)
+            ->where('id', '!=', $ad->id)
+            ->orderBy('last_view', 'desc')
+            ->limit(6)
+            ->get();
+
         return view(env('LAYOUT').'.product', [
             'ad' => $ad,
             'info' => $info,
@@ -208,6 +214,7 @@ class AdController extends Controller
             'allAttributes' => (new AttributeController())->getAttributes(),
             'relatedAds' => $relatedAds,
             'menus' => Menu::where('is_active', true)->orderBy('position', 'asc')->get(),
+            'ownerMoreAds' => $ownerMoreAds,
         ]);
     }
 
