@@ -45,7 +45,7 @@ jobs:
                         chown -R ${{ vars.USER }}:www-data ./.[^.]*
 
                         printf "\n\n *** change user *** \n\n"
-                        su harkalygergo
+                        su ${{ vars.USER }}
 
                         printf "\n\n *** composer update *** \n\n"
                         composer update

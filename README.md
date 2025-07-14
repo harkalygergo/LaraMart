@@ -1,6 +1,6 @@
 # LaraMart | Laravel-based marketplace
 
-###### Version: 2025.07.14.5
+###### Version: 2025.07.14.6
 
 LaraMart web application is an online marketplace management tool based on Laravel PHP framework made by @harkalygergo. All rights reserved!
 
