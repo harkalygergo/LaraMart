@@ -5,12 +5,20 @@
                 <i class="bi bi-list"></i>
             </a>
         </div>
-        <div class="col-7 col-sm-6 col-lg-4 text-start text-md-center">
-            <a class="corben-bold text-dark text-decoration-none" href="/">
-                <span class="display-4 d-none d-lg-inline-block">⌚</span>
-                <span class="fs-1" style="color:#9e6740;">óraplacc.hu</span>
-            </a>
-            <p>új és használt órák piactere</p>
+        <div class="col-7 col-sm-6 col-lg-4 text-start">
+            <table>
+                <tr>
+                    <td>
+                        <span class="display-4 d-none d-lg-inline-block">⌚</span>
+                    </td>
+                    <td>
+                        <a class="corben-bold text-dark text-decoration-none" href="/">
+                            <span class="fs-1" style="color:#9e6740;">óraplacc.hu</span>
+                        </a>
+                        <br>új és használt órák piactere
+                    </td>
+                </tr>
+            </table>
         </div>
         <div class="col-3 col-sm-4 col-lg-4 my-auto text-end">
             <a class="btn btn-primary" title="profil" href="{{ route('login') }}">
