@@ -336,8 +336,8 @@
     @if (!empty($ownerMoreAds->toArray()) && count($ownerMoreAds) > 0)
         <div class="row pt-5">
             <div class="col text-center">
-                <h3 class="display-6">
-                    A hirdető további termékei
+                <h3 class="display-6 corben-regular">
+                    {{ $ad['user_id'] ? $ad['user']['name'] : $ad['merchant']['name'] }} további termékei
                 </h3>
             </div>
         </div>
@@ -353,7 +353,7 @@
     @if (!empty($relatedAds->toArray()) && count($relatedAds) > 0)
         <div class="row pt-5">
             <div class="col text-center">
-                <h3 class="display-6">
+                <h3 class="display-6 corben-regular">
                     Mások ezt nézik most
                 </h3>
             </div>
